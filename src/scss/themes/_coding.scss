@@ -1,0 +1,6 @@
+@use "../abstract/mixin" as mx;
+@use "../base/variables" as var;
+
+.theme-code-vibes {
+    @include mx.apply-theme(code-vibes);
+}
