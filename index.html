@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+</head>
+<body>
+
+    <!-- ==================== HOME ==================== -->
+    <section class="view view--home is-active" id="view-home">
+        <div class="home">
+            <div class="home__content">
+                <p class="home__subtitle">It's play time.</p>
+                <h1 class="home__title">Ready to play?</h1>
+                <button class="btn btn--play" id="btn-go-to-settings">
+                    <img src="/src/assets/icons/stadia_controller_black.svg" alt="gamepad" />
+                    <span>Play</span>
+                    <span>→</span>
+                </button>
+            </div>
+            <img 
+                class="home__deco" 
+                src="/src/assets/icons/stadia_controller_yellow.svg" 
+                alt="" 
+                aria-hidden="true" 
+            />
+        </div>
+    </section>
+
+    <!-- ==================== SETTINGS ==================== -->
+    <section class="view view--settings" id="view-settings">
+        <div class="settings">
+            <h2 class="settings__title">Settings</h2>
+            <div class="settings__groups"></div>
+                <!-- Game themes -->
+                <div class="settings__group">
+                    <h3 class="settings__group-title">
+                        <img src="/icons/palette.svg" alt="" />
+                        Game themes
+                    </h3>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="theme" value="code-vibes" />
+                        <span class="radio__label">Code vibes theme</span>
+                    </label>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="theme" value="gaming" />
+                        <span class="radio__label">Gaming theme</span>
+                    </label>
+                </div>
+
+                <!-- Choose player -->
+                <div class="settings__group">
+                    <h3 class="settings__group-title">
+                        <img src="/icons/player.svg" alt="" />
+                        Choose player
+                    </h3>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="player" value="blue" />
+                        <span class="radio__label">Blue</span>
+                    </label>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="player" value="orange" />
+                        <span class="radio__label">Orange</span>
+                    </label>
+                </div>
+
+                <!-- Board size -->
+                <div class="settings__group">
+                    <h3 class="settings__group-title">
+                        <img src="/icons/board.svg" alt="" />
+                        Board size
+                    </h3>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="size" value="16" />
+                        <span class="radio__label">16 cards</span>
+                    </label>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="size" value="24" />
+                        <span class="radio__label">24 cards</span>
+                    </label>
+                    <label class="radio">
+                        <input class="radio__input" type="radio" name="size" value="36" />
+                        <span class="radio__label">36 cards</span>
+                    </label>
+                </div>
+            </div>
+            <!-- Preview + Start bar -->
+            <div class="settings__preview" id="settings-preview">
+                <!-- Preview image wird per JS gesetzt -->
+            </div>
+
+            <div class="settings__bar" id="settings-bar">
+                <span class="settings__bar-item" id="bar-theme">Theme</span>
+                <span class="settings__bar-divider">/</span>
+                <span class="settings__bar-item" id="bar-player">Player</span>
+                <span class="settings__bar-divider">/</span>
+                <span class="settings__bar-item" id="bar-size">Board size</span>
+                <button class="btn btn--start" id="btn-start" disabled>
+                    <img src="/icons/play.svg" alt="" />
+                    <span>Start</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GAME ==================== -->
+    <section class="view view--game" id="view-game">
+        <div class="game">
+
+            <!-- Header -->
+            <header class="game-header">
+                <div class="game-header__scores">
+                    <div class="score score--blue" id="score-blue">
+                        <img src="/icons/player.svg" alt="blue player" />
+                        <span id="score-blue-value">0</span>
+                    </div>
+                    <div class="score score--orange" id="score-orange">
+                        <img src="/icons/player.svg" alt="orange player" />
+                        <span id="score-orange-value">0</span>
+                    </div>
+                </div>
+                <div class="game-header__current">
+                    <span>Current player:</span>
+                    <img class="current-player-icon" id="current-player-icon" src="/icons/player.svg" alt="current player" />
+                </div>
+                <button class="btn btn--exit" id="btn-exit">
+                    <img src="/icons/exit.svg" alt="" />
+                    <span>Exit game</span>
+                </button>
+            </header>
+
+            <!-- Board -->
+            <div class="board" id="board">
+                <!-- Karten werden per JS generiert -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== GAME OVER ==================== -->
+    <section class="view view--gameover" id="view-gameover">
+        <div class="gameover">
+            <h2 class="gameover__title">Game over</h2>
+            <p class="gameover__subtitle">Final score</p>
+            <div class="gameover__scores">
+                <div class="score score--blue">
+                    <img src="/icons/player.svg" alt="" />
+                    <span id="final-score-blue">0</span>
+                </div>
+                <div class="score score--orange">
+                    <img src="/icons/player.svg" alt="" />
+                    <span id="final-score-orange">0</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WINNER ==================== -->
+    <section class="view view--winner" id="view-winner">
+        <div class="winner">
+            <p class="winner__subtitle">The winner is</p>
+            <h2 class="winner__name" id="winner-name">Blue Player</h2>
+            <img class="winner__icon" id="winner-icon" src="/icons/player.svg" alt="winner" />
+            <button class="btn btn--back" id="btn-back-to-start">
+                Back to start
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== POPUP ==================== -->
+    <div class="popup" id="popup" aria-hidden="true">
+        <div class="popup__box">
+            <p class="popup__text">Are you sure you want to quit the game?</p>
+            <div class="popup__actions">
+                <button class="btn btn--no" id="btn-popup-no">No, back to game</button>
+                <button class="btn btn--yes" id="btn-popup-yes">Yes, quit game</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
