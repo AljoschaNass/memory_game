@@ -1,0 +1,55 @@
+@use "../base/variables" as var;
+
+// Flex center
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+// Responsive
+@mixin respond($minsize: zero) {
+    @media screen and (min-width: map-get(var.$breakpoints, $minsize)) {
+        @content;
+    }
+}
+
+// Fade in Animation
+@mixin fade-in($time: 0.3s, $eas: ease-in-out) {
+    animation: fadeIn $time $eas forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+// Card flip
+@mixin card-flip($time: 0.4s) {
+    transform-style: preserve-3d;
+    transition: transform $time ease-in-out;
+}
+
+// Absolute fill (inset: 0)
+@mixin fill {
+    position: absolute;
+    inset: 0;
+}
+
+// Theme-Farbe als CSS-Variable setzen
+@mixin apply-theme($theme) {
+    $map: map-get(var.$themes, $theme);
+    --color-bg:         #{map-get($map, bg)};
+    --color-card-front: #{map-get($map, card-front)};
+    --color-card-back:  #{map-get($map, card-back)};
+    --color-accent:     #{map-get($map, accent)};
+    --color-text:       #{map-get($map, text)};
+    --color-exit-btn:   #{map-get($map, exit-btn)};
+}

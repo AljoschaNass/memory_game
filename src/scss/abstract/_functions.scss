@@ -1,0 +1,15 @@
+// px zu rem
+@function px-to-rem($px, $base: 16) {
+    @return ($px / $base) * 1rem;
+}
+
+// Wert aus Spacing-Map holen
+@function spacing($key) {
+    @return map-get($spacing, $key);
+}
+
+// Theme-Farbe holen
+@function theme-color($theme, $key) {
+    $map: map-get($themes, $theme);
+    @return map-get($map, $key);
+}

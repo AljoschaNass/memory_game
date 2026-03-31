@@ -1,0 +1,31 @@
+@use "../abstract/functions" as fct;
+@use "variables" as var;
+
+body {
+    font-size: map-get(var.$font-sizes, md);
+    font-weight: map-get(var.$font-weights, regular);
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: map-get(var.$font-sizes, xxl);
+    font-weight: map-get(var.$font-weights, bold);
+}
+
+h2 {
+    font-size: map-get(var.$font-sizes, xl);
+    font-weight: map-get(var.$font-weights, bold);
+}
+
+h3 {
+    font-size: map-get(var.$font-sizes, lg);
+    font-weight: map-get(var.$font-weights, bold);
+}
+
+p, span {
+    font-size: map-get(var.$font-sizes, md);
+}
+
+.text-sm {
+    font-size: map-get(var.$font-sizes, sm);
+}

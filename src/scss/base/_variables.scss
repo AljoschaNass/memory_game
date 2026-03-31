@@ -1,0 +1,116 @@
+$font-primary: 'Almarai', sans-serif;
+$font-display: 'Red Rose', sans-serif;
+
+// Breakpoints
+$breakpoints: (
+    zero: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
+// Spacing
+$spacing: (
+    xs:   4px,
+    sm:   8px,
+    md:   16px,
+    lg:   24px,
+    xl:   32px,
+    xxl:  48px
+);
+
+// Border radius
+$radius: (
+    sm:   6px,
+    md:   12px,
+    lg:   16px,
+    full: 9999px
+);
+
+// Font sizes
+$font-sizes: (
+    sm:   14px,
+    md:   16px,
+    lg:   24px,
+    xl:   40px,
+    xxl:  64px
+);
+
+// Font weights
+$font-weights: (
+    regular: 400,
+    bold:    700
+);
+
+// Players
+$player-blue:   #4A9EE0;
+$player-orange: #E07A4A;
+
+// UI colors (theme-unabhängig)
+$color-white:  #ffffff;
+$color-black:  #000000;
+$color-yellow: #D4E157;  // Play-Button
+
+// Card images per theme (18 Karten, davon max 18 Paare)
+$coding-cards: (
+    "coding-angular",
+    "coding-back",
+    "coding-bootstrap",
+    "coding-css",
+    "coding-database",
+    "coding-django",
+    "coding-firebase",
+    "coding-git",
+    "coding-github",
+    "coding-html",
+    "coding-javascript",
+    "coding-nodejs",
+    "coding-python",
+    "coding-react",
+    "coding-sass",
+    "coding-terminal",
+    "coding-typescript",
+    "coding-vscode",
+    "coding-vue"
+);
+
+$gaming-cards: (
+    "gaming-banana",
+    "gaming-card",
+    "gaming-coin",
+    "gaming-controller",
+    "gaming-dices",
+    "gaming-gameboy",
+    "gaming-labyrint",
+    "gaming-levelup",
+    "gaming-minecraft",
+    "gaming-mushroom",
+    "gaming-pacman",
+    "gaming-pacmanattack",
+    "gaming-playbutton",
+    "gaming-puzzle",
+    "gaming-snake",
+    "gaming-squidround",
+    "gaming-squidsquare",
+    "gaming-squidtri"
+);
+
+$themes: (
+    code-vibes: (
+        bg:          #2C2C38,
+        card-front:  #4DB6AC,
+        card-back:   #3D3D4E,
+        accent:      #4DB6AC,
+        text:        #ffffff,
+        exit-btn:    #3D3D4E,
+    ),
+    gaming: (
+        bg:          #2E4A5A,
+        card-front:  #C2185B,
+        card-back:   #7B1FA2,
+        accent:      #C2185B,
+        text:        #ffffff,
+        exit-btn:    #C62828,
+    )
+);
