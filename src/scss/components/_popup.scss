@@ -1,0 +1,40 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    @include mx.flex-center();
+    z-index: 100;
+
+    // Versteckt per default
+    display: none;
+
+    &.is-active {
+        display: flex;
+    }
+
+    &__box {
+        background-color: var.$color-white;
+        border-radius: map-get(var.$radius, lg);
+        padding: map-get(var.$spacing, xl);
+        @include mx.flex-center(column);
+        gap: map-get(var.$spacing, lg);
+        max-width: 400px;
+        width: 90%;
+    }
+
+    &__text {
+        font-size: map-get(var.$font-sizes, md);
+        font-weight: map-get(var.$font-weights, bold);
+        color: var.$color-black;
+        text-align: center;
+    }
+
+    &__actions {
+        @include mx.flex-center(row);
+        gap: map-get(var.$spacing, md);
+    }
+}

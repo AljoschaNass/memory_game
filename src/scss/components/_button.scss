@@ -1,0 +1,78 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+// Base button
+.btn {
+    @include mx.flex-center(row);
+    gap: map-get(var.$spacing, sm);
+    padding: map-get(var.$spacing, sm) map-get(var.$spacing, lg);
+    border-radius: map-get(var.$radius, sm);
+    font-weight: map-get(var.$font-weights, bold);
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+        opacity: 0.85;
+    }
+
+    // Play button (Home)
+    &--play {
+        background-color: var.$color-yellow;
+        color: var.$color-black;
+        font-size: fct.px-to-rem(40);
+        padding: map-get(var.$spacing, md) map-get(var.$spacing, xl);
+        border-radius: map-get(var.$radius, sm);
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    // Start button (Settings)
+    &--start {
+        background-color: var.$color-yellow;
+        color: var.$color-black;
+        font-weight: map-get(var.$font-weights, bold);
+
+        &:disabled {
+            background-color: #cccccc;
+            color: #888888;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+    }
+
+    // Exit button (Game)
+    &--exit {
+        background-color: var(--color-exit-btn);
+        color: var.$color-white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    // Popup buttons
+    &--no {
+        background-color: transparent;
+        border: 2px solid var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    &--yes {
+        background-color: var(--color-accent);
+        color: var.$color-white;
+    }
+
+    // Back to start (Winner)
+    &--back {
+        background-color: transparent;
+        border: 2px solid var.$color-white;
+        color: var.$color-white;
+    }
+}
