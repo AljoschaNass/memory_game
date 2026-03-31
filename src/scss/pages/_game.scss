@@ -1,0 +1,36 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.view--game {
+    background-color: var(--color-bg);
+    min-height: 100vh;
+}
+
+.game {
+    @include mx.flex-center(column);
+    min-height: 100vh;
+    padding: map-get(var.$spacing, xl);
+    gap: map-get(var.$spacing, xl);
+}
+
+.board {
+    display: grid;
+    gap: map-get(var.$spacing, sm);
+    justify-content: center;
+
+    // 16 Karten = 4x4
+    &--16 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    // 24 Karten = 6x4
+    &--24 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    // 36 Karten = 6x6
+    &--36 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}

@@ -1,0 +1,8 @@
+// Views – nur die aktive ist sichtbar
+.view {
+    display: none;
+
+    &.is-active {
+        display: block;
+    }
+}

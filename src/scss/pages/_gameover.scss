@@ -1,0 +1,35 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.view--gameover {
+    background-color: var(--color-bg);
+    min-height: 100vh;
+}
+
+.gameover {
+    @include mx.flex-center(column);
+    min-height: 100vh;
+    gap: map-get(var.$spacing, xl);
+
+    &__title {
+        font-size: map-get(var.$font-sizes, xxl);
+        font-weight: map-get(var.$font-weights, bold);
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+    }
+
+    &__subtitle {
+        font-size: map-get(var.$font-sizes, md);
+        color: var.$color-white;
+    }
+
+    &__scores {
+        @include mx.flex-center(row);
+        gap: map-get(var.$spacing, md);
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: map-get(var.$spacing, sm) map-get(var.$spacing, xl);
+        border-radius: map-get(var.$radius, full);
+    }
+}

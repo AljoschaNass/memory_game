@@ -1,0 +1,50 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.view--winner {
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.winner {
+    @include mx.flex-center(column);
+    min-height: 100vh;
+    gap: map-get(var.$spacing, lg);
+
+    &__subtitle {
+        font-size: map-get(var.$font-sizes, md);
+        color: var.$color-white;
+    }
+
+    &__name {
+        font-size: map-get(var.$font-sizes, xl);
+        font-weight: map-get(var.$font-weights, bold);
+        text-transform: uppercase;
+
+        &--blue {
+            color: var.$player-blue;
+        }
+
+        &--orange {
+            color: var.$player-orange;
+        }
+    }
+
+    &__icon {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+    }
+
+    // Konfetti wrapper
+    &__confetti {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+    }
+}

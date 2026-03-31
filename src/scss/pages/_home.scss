@@ -1,0 +1,51 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.view--home {
+    background-color: #2C2C38;
+    width: 1440px;
+    height: 1024px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.home {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    @include mx.flex-center(column);
+    align-items: flex-start;
+    padding-left: 120px;
+
+    &__content {
+        @include mx.flex-center(column);
+        align-items: flex-start;
+        gap: map-get(var.$spacing, lg);
+        z-index: 1;
+    }
+
+    &__subtitle {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: fct.px-to-rem(48);
+    }
+
+    &__title {
+        color: var.$color-white;
+        font-size: fct.px-to-rem(140);
+        font-weight: map-get(var.$font-weights, bold);
+        line-height: 1.1;
+    }
+
+    // Dekorativer Controller unten links
+    &__deco {
+        position: absolute;
+        left: -88px;
+        width: 414px;
+        height: 301px;
+        pointer-events: none;
+        z-index: 0;
+        top: 546px;
+    }
+}
