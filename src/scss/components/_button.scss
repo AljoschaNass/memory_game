@@ -7,7 +7,6 @@
     @include mx.flex-center(row);
     gap: map-get(var.$spacing, sm);
     padding: map-get(var.$spacing, sm) map-get(var.$spacing, lg);
-    border-radius: map-get(var.$radius, sm);
     font-weight: map-get(var.$font-weights, bold);
     cursor: pointer;
     border: none;
@@ -21,13 +20,17 @@
     &--play {
         background-color: var.$color-yellow;
         color: var.$color-black;
-        font-size: fct.px-to-rem(40);
         padding: map-get(var.$spacing, md) map-get(var.$spacing, xl);
-        border-radius: map-get(var.$radius, sm);
+        gap: map-get(var.$spacing, md);
+        margin-top: map-get(var.$spacing, xxl);
 
         img {
-            width: 24px;
-            height: 24px;
+            width: 44px;
+            height: 32px;
+        }
+
+        span {
+            font-size: fct.px-to-rem(40);
         }
     }
 

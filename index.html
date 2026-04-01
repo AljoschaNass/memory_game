@@ -32,11 +32,12 @@
     <section class="view view--settings" id="view-settings">
         <div class="settings">
             <h2 class="settings__title">Settings</h2>
-            <div class="settings__groups"></div>
+
+            <div class="settings__left">
                 <!-- Game themes -->
                 <div class="settings__group">
                     <h3 class="settings__group-title">
-                        <img src="/icons/palette.svg" alt="" />
+                        <img src="/src/assets/icons/palette.svg" alt="" />
                         Game themes
                     </h3>
                     <label class="radio">
@@ -52,7 +53,7 @@
                 <!-- Choose player -->
                 <div class="settings__group">
                     <h3 class="settings__group-title">
-                        <img src="/icons/player.svg" alt="" />
+                        <img src="/src/assets/icons/chess_pawn.svg" alt="" />
                         Choose player
                     </h3>
                     <label class="radio">
@@ -68,7 +69,7 @@
                 <!-- Board size -->
                 <div class="settings__group">
                     <h3 class="settings__group-title">
-                        <img src="/icons/board.svg" alt="" />
+                        <img src="/src/assets/icons/style.svg" alt="" />
                         Board size
                     </h3>
                     <label class="radio">
@@ -85,11 +86,13 @@
                     </label>
                 </div>
             </div>
-            <!-- Preview + Start bar -->
+
+            <!-- Preview -->
             <div class="settings__preview" id="settings-preview">
-                <!-- Preview image wird per JS gesetzt -->
+                <img src="/src/assets/previews/coding-preview.svg" alt="theme preview" id="preview-img" />
             </div>
 
+            <!-- Bar -->
             <div class="settings__bar" id="settings-bar">
                 <span class="settings__bar-item" id="bar-theme">Theme</span>
                 <span class="settings__bar-divider">/</span>
@@ -97,7 +100,7 @@
                 <span class="settings__bar-divider">/</span>
                 <span class="settings__bar-item" id="bar-size">Board size</span>
                 <button class="btn btn--start" id="btn-start" disabled>
-                    <img src="/icons/play.svg" alt="" />
+                    <img src="/src/assets/icons/stadia_controller_black.svg" alt="" />
                     <span>Start</span>
                 </button>
             </div>

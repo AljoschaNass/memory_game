@@ -4,7 +4,10 @@
 
 .view--settings {
     background-color: var.$color-white;
-    min-height: 100vh;
+    width: 1440px;
+    height: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .settings {
@@ -12,20 +15,28 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     gap: map-get(var.$spacing, xl);
-    padding: map-get(var.$spacing, xxl);
-    min-height: 100vh;
+    padding: 80px 120px;
+    height: 100%;
 
     &__title {
         grid-column: 1 / -1;
-        font-size: map-get(var.$font-sizes, xl);
+        font-size: fct.px-to-rem(54);
         font-weight: map-get(var.$font-weights, bold);
+        font-family: var.$font-display;
         color: var.$color-black;
         border-bottom: 3px solid var.$color-yellow;
         padding-bottom: map-get(var.$spacing, sm);
         width: fit-content;
     }
 
-    // Linke Seite – Radio Gruppen
+    &__left {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        gap: map-get(var.$spacing, xl);
+    }
+
     &__groups {
         @include mx.flex-center(column);
         align-items: flex-start;
@@ -41,34 +52,35 @@
     &__group-title {
         @include mx.flex-center(row);
         gap: map-get(var.$spacing, sm);
-        font-size: map-get(var.$font-sizes, md);
+        font-size: fct.px-to-rem(24);
         font-weight: map-get(var.$font-weights, bold);
         color: var.$color-black;
 
         img {
-            width: 20px;
-            height: 20px;
+            width: 32px;
+            height: 32px;
         }
     }
 
-    // Rechte Seite – Preview Bild
     &__preview {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
         @include mx.flex-center();
         border-radius: map-get(var.$radius, lg);
         overflow: hidden;
 
         img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
             border-radius: map-get(var.$radius, lg);
         }
     }
 
-    // Bottom bar – Theme / Player / Board size / Start
     &__bar {
         grid-column: 1 / -1;
         @include mx.flex-center(row);
+        justify-content: flex-start;
         gap: map-get(var.$spacing, md);
         padding: map-get(var.$spacing, md) map-get(var.$spacing, lg);
         background-color: #f5f5f5;
@@ -76,18 +88,17 @@
     }
 
     &__bar-item {
-        font-size: map-get(var.$font-sizes, md);
+        font-size: fct.px-to-rem(16);
         color: var.$color-black;
     }
 
     &__bar-divider {
         color: var.$color-yellow;
         font-weight: map-get(var.$font-weights, bold);
-        font-size: map-get(var.$font-sizes, lg);
+        font-size: fct.px-to-rem(20);
     }
 }
 
-// Radio buttons
 .radio {
     @include mx.flex-center(row);
     align-items: center;
@@ -95,14 +106,14 @@
     cursor: pointer;
 
     &__input {
-        accent-color: var.$color-yellow;
+        accent-color: var.$color-black;
         width: 16px;
         height: 16px;
         cursor: pointer;
     }
 
     &__label {
-        font-size: map-get(var.$font-sizes, md);
+        font-size: fct.px-to-rem(14);
         color: var.$color-black;
     }
 }
