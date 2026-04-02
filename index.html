@@ -41,7 +41,7 @@
                         Game themes
                     </h3>
                     <label class="radio">
-                        <input class="radio__input" type="radio" name="theme" value="coding" />
+                        <input class="radio__input" type="radio" name="theme" value="coding" checked />
                         <span class="radio__label">Coding theme</span>
                     </label>
                     <label class="radio">
@@ -57,7 +57,7 @@
                         Choose player
                     </h3>
                     <label class="radio">
-                        <input class="radio__input" type="radio" name="player" value="blue" />
+                        <input class="radio__input" type="radio" name="player" value="blue" checked />
                         <span class="radio__label">Blue</span>
                     </label>
                     <label class="radio">
@@ -73,7 +73,7 @@
                         Board size
                     </h3>
                     <label class="radio">
-                        <input class="radio__input" type="radio" name="size" value="16" />
+                        <input class="radio__input" type="radio" name="size" value="16" checked />
                         <span class="radio__label">16 cards</span>
                     </label>
                     <label class="radio">
@@ -95,12 +95,12 @@
 
                 <!-- Bar -->
                 <div class="settings__bar" id="settings-bar">
-                    <span class="settings__bar-item" id="bar-theme">Theme</span>
+                    <span class="settings__bar-item" id="bar-theme">Coding Theme</span>
                     <span class="settings__bar-divider">/</span>
-                    <span class="settings__bar-item" id="bar-player">Player</span>
+                    <span class="settings__bar-item" id="bar-player">Blue Player</span>
                     <span class="settings__bar-divider">/</span>
-                    <span class="settings__bar-item" id="bar-size">Board size</span>
-                    <button class="btn btn--start" id="btn-start" disabled>
+                    <span class="settings__bar-item" id="bar-size">Board-16 Cards</span>
+                    <button class="btn btn--start" id="btn-start">
                         <img src="/src/assets/icons/stadia_controller_black.svg" alt="" />
                         <span>Start</span>
                     </button>
@@ -117,11 +117,11 @@
             <header class="game-header">
                 <div class="game-header__scores">
                     <div class="score score--blue" id="score-blue">
-                        <img src="/icons/player.svg" alt="blue player" />
+                        <img src="/src/assets/icons/player-blue.svg" alt="blue player" />
                         <span id="score-blue-value">0</span>
                     </div>
                     <div class="score score--orange" id="score-orange">
-                        <img src="/icons/player.svg" alt="orange player" />
+                        <img src="/src/assets/icons/player-orange.svg" alt="orange player" />
                         <span id="score-orange-value">0</span>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     <img class="current-player-icon" id="current-player-icon" src="/icons/player.svg" alt="current player" />
                 </div>
                 <button class="btn btn--exit" id="btn-exit">
-                    <img src="/icons/exit.svg" alt="" />
+                    <img src="/src/assets/icons/exit-white.svg" alt="exit" />
                     <span>Exit game</span>
                 </button>
             </header>

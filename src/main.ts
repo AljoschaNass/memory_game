@@ -130,9 +130,15 @@ function checkSettingsComplete(): void {
 
 function updateSettingsBar(): void {
     const { theme, player, size } = state.settings;
-    barTheme.textContent  = theme  ? theme              : 'Theme';
-    barPlayer.textContent = player ? `${player} Player` : 'Player';
-    barSize.textContent   = size   ? `Board-${size} Cards` : 'Board size';
+    
+    const themeLabel: Record<Theme, string> = {
+        'coding': 'Code Theme',
+        'gaming': 'Game Theme'
+    };
+
+    barTheme.textContent  = theme  ? themeLabel[theme]                                          : 'Theme';
+    barPlayer.textContent = player ? `${player.charAt(0).toUpperCase() + player.slice(1)} Player` : 'Player';
+    barSize.textContent   = size   ? `Board-${size} Cards`                                      : 'Board size';
 }
 
 function initSettingsListeners(): void {
@@ -187,7 +193,7 @@ function createCards(theme: Theme, size: BoardSize): CardData[] {
     return paired.map((name, index) => ({
         id: index,
         name,
-        imagePath: `/src/assets/cards/${name}.svg`,
+        imagePath: `/projects/banana/src/assets/cards/${name}.svg`,
         isFlipped: false,
         isMatched: false
     }));
@@ -201,7 +207,7 @@ function renderBoard(): void {
     board.innerHTML = '';
 
     state.cards.forEach(card => {
-        const coverPath = `/src/assets/cards/${theme}-cover.svg`;
+        const coverPath = `/projects/banana/src/assets/cards/${theme}-cover.svg`;
 
         const btn = document.createElement('button');
         btn.classList.add('card');
@@ -231,7 +237,7 @@ function updateScoreDisplay(): void {
 
 function updateCurrentPlayerDisplay(): void {
     const color = state.currentPlayer;
-    currentPlayerIcon.src = `/icons/player-${color}.svg`;
+    currentPlayerIcon.src = `/projects/banana/src/assets/icons/player-${color}.svg`;
 }
 
 function switchPlayer(): void {
@@ -355,15 +361,21 @@ function startGame(): void {
 }
 
 function resetToHome(): void {
-    state.settings = { theme: null, player: null, size: null };
+    state.settings = { theme: 'coding', player: 'blue', size: 16 };
     state.cards    = [];
     state.scores   = { blue: 0, orange: 0 };
 
-    document.querySelectorAll<HTMLInputElement>('input[type="radio"]')
-        .forEach(r => r.checked = false);
+    const firstTheme  = document.querySelector<HTMLInputElement>('input[name="theme"]');
+    const firstPlayer = document.querySelector<HTMLInputElement>('input[name="player"]');
+    const firstSize   = document.querySelector<HTMLInputElement>('input[name="size"]');
 
+    if (firstTheme)  firstTheme.checked  = true;
+    if (firstPlayer) firstPlayer.checked = true;
+    if (firstSize)   firstSize.checked   = true;
+
+    applyTheme('coding');
     updateSettingsBar();
-    btnStart.disabled = true;
+    checkSettingsComplete();
     document.body.classList.remove('theme-coding', 'theme-gaming');
 
     showView('home');
@@ -424,6 +436,14 @@ function initEventListeners(): void {
 function init(): void {
     initSettingsListeners();
     initEventListeners();
+
+    state.settings.theme  = 'coding';
+    state.settings.player = 'blue';
+    state.settings.size   = 16;
+    applyTheme('coding');
+    updateSettingsBar();
+    checkSettingsComplete();
+
     showView('home');
 }
 
