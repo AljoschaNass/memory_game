@@ -1,5 +1,6 @@
 $font-primary: 'Almarai', sans-serif;
 $font-display: 'Red Rose', sans-serif;
+$font-gaming: 'Orbitron', sans-serif;
 
 // Breakpoints
 $breakpoints: (
@@ -14,10 +15,13 @@ $breakpoints: (
 $spacing: (
     xs:   4px,
     sm:   8px,
+     m:   12px,
     md:   16px,
     lg:   24px,
     xl:   32px,
-    xxl:  48px
+    xxl:  44px,
+    xxxl: 54px
+
 );
 
 // Border radius
@@ -48,10 +52,11 @@ $player-blue:   #2BB1FF;
 $player-orange: #F58E39;
 
 // UI colors (theme-unabhängig)
-$color-home-bg: #2C2C38;
+$color-home-bg: #303131;
+$primary-dark: #303131;
 $color-white:  #ffffff;
 $color-black:  #000000;
-$color-yellow: #F0EA6E;  // Play-Button
+$color-yellow: #F0EA6E;
 
 // Card images per theme (18 Karten, davon max 18 Paare)
 $coding-cards: (
@@ -99,7 +104,7 @@ $gaming-cards: (
 
 $themes: (
     code-vibes: (
-        bg:          #2C2C38,
+        bg:          #303131,
         card-front:  #4DB6AC,
         card-back:   #3D3D4E,
         accent:      #4DB6AC,
@@ -107,7 +112,7 @@ $themes: (
         exit-btn:    #3D3D4E,
     ),
     gaming: (
-        bg:          #2E4A5A,
+        bg:          #294f60,
         card-front:  #C2185B,
         card-back:   #7B1FA2,
         accent:      #C2185B,

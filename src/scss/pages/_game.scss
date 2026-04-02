@@ -3,7 +3,7 @@
 @use "../base/variables" as var;
 
 .view--game {
-    background-color: var(--color-bg);
+    background-color: var.$color-home-bg;
     min-height: 100vh;
 }
 

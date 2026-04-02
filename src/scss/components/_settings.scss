@@ -34,7 +34,7 @@
         grid-row: 2 / 3;
         display: flex;
         flex-direction: column;
-        gap: map-get(var.$spacing, xl);
+        gap: map-get(var.$spacing, xxl);
     }
 
     &__right {
@@ -42,7 +42,7 @@
         grid-row: 2 / 3;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        align-items: flex-end;
         gap: map-get(var.$spacing, xl);
     }
 
@@ -55,7 +55,7 @@
     &__group {
         @include mx.flex-center(column);
         align-items: flex-start;
-        gap: map-get(var.$spacing, sm);
+        gap: map-get(var.$spacing, m);
     }
 
     &__group-title {
@@ -79,7 +79,7 @@
         overflow: hidden;
 
         img {
-            width: 100%;
+            width: 460px;
             height: auto;
             object-fit: cover;
             border-radius: map-get(var.$radius, lg);
@@ -89,10 +89,10 @@
     &__bar {
         grid-column: 1 / -1;
         @include mx.flex-center(row);
+        justify-content: flex-start;
         gap: map-get(var.$spacing, md);
         padding: map-get(var.$spacing, md) map-get(var.$spacing, lg);
-        background-color: #f5f5f5;
-        border-radius: map-get(var.$radius, md);
+        background-color: #F6F6F6;
 
         &-item {
             font-size: fct.px-to-rem(20);
@@ -112,18 +112,23 @@
 .radio {
     @include mx.flex-center(row);
     align-items: center;
+    padding-left: map-get(var.$spacing, xxl); 
     gap: map-get(var.$spacing, sm);
     cursor: pointer;
 
     &__input {
-        accent-color: var.$color-black;
-        width: 16px;
-        height: 16px;
+        accent-color: var.$primary-dark;
+        width: 20px;
+        aspect-ratio: 1/1;
         cursor: pointer;
     }
 
     &__label {
         font-size: fct.px-to-rem(20);
-        color: var.$color-black;
+        color: var.$primary-dark;
+    }
+
+    &__input:checked + &__label {
+        font-weight: map-get(var.$font-weights, bold);
     }
 }
