@@ -37,6 +37,15 @@
         gap: map-get(var.$spacing, xl);
     }
 
+    &__right {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: map-get(var.$spacing, xl);
+    }
+
     &__groups {
         @include mx.flex-center(column);
         align-items: flex-start;
@@ -80,23 +89,24 @@
     &__bar {
         grid-column: 1 / -1;
         @include mx.flex-center(row);
-        justify-content: flex-start;
         gap: map-get(var.$spacing, md);
         padding: map-get(var.$spacing, md) map-get(var.$spacing, lg);
         background-color: #f5f5f5;
         border-radius: map-get(var.$radius, md);
+
+        &-item {
+            font-size: fct.px-to-rem(20);
+            color: var.$color-black;
+        }
+
+        &-divider {
+            color: var.$color-yellow;
+            font-weight: map-get(var.$font-weights, bold);
+            font-size: fct.px-to-rem(40);
+        }
     }
 
-    &__bar-item {
-        font-size: fct.px-to-rem(16);
-        color: var.$color-black;
-    }
-
-    &__bar-divider {
-        color: var.$color-yellow;
-        font-weight: map-get(var.$font-weights, bold);
-        font-size: fct.px-to-rem(20);
-    }
+    
 }
 
 .radio {
@@ -113,7 +123,7 @@
     }
 
     &__label {
-        font-size: fct.px-to-rem(14);
+        font-size: fct.px-to-rem(20);
         color: var.$color-black;
     }
 }

@@ -4,7 +4,7 @@ import './scss/main.scss';
 // TYPES
 // ============================================================
 
-type Theme = 'code-vibes' | 'gaming';
+type Theme = 'coding' | 'gaming';
 type Player = 'blue' | 'orange';
 type BoardSize = 16 | 24 | 36;
 
@@ -109,13 +109,13 @@ function showView(viewName: keyof typeof views): void {
 // ============================================================
 
 function applyTheme(theme: Theme): void {
-    document.body.classList.remove('theme-code-vibes', 'theme-gaming');
+    document.body.classList.remove('theme-coding', 'theme-gaming');
     document.body.classList.add(`theme-${theme}`);
 }
 
 function updateSettingsPreview(theme: Theme): void {
     settingsPreview.innerHTML = `
-        <img src="/assets/previews/${theme}-preview.png" alt="${theme} preview" />
+        <img src="/projects/banana/src/assets/previews/${theme}-preview.svg" alt="${theme} preview" />
     `;
 }
 
@@ -171,7 +171,7 @@ function initSettingsListeners(): void {
 // ============================================================
 
 function getCardList(theme: Theme): string[] {
-    return theme === 'code-vibes' ? codingCards : gamingCards;
+    return theme === 'coding' ? codingCards : gamingCards;
 }
 
 function shuffle<T>(arr: T[]): T[] {
@@ -364,7 +364,7 @@ function resetToHome(): void {
 
     updateSettingsBar();
     btnStart.disabled = true;
-    document.body.classList.remove('theme-code-vibes', 'theme-gaming');
+    document.body.classList.remove('theme-coding', 'theme-gaming');
 
     showView('home');
 }
