@@ -44,12 +44,11 @@
 }
 
 // Theme-Farbe als CSS-Variable setzen
-@mixin apply-theme($theme) {
-    $map: map-get(var.$themes, $theme);
-    --color-bg:         #{map-get($map, bg)};
-    --color-card-front: #{map-get($map, card-front)};
-    --color-card-back:  #{map-get($map, card-back)};
-    --color-accent:     #{map-get($map, accent)};
-    --color-text:       #{map-get($map, text)};
-    --color-exit-btn:   #{map-get($map, exit-btn)};
+@mixin apply-theme($theme-map) {
+    --color-bg:         #{map-get($theme-map, bg)};
+    --color-card-front: #{map-get($theme-map, card-front)};
+    --color-card-back:  #{map-get($theme-map, card-back)};
+    --color-accent:     #{map-get($theme-map, accent)};
+    --color-text:       #{map-get($theme-map, text)};
+    --color-header-bg:  #{map-get($theme-map, header-bg)};
 }
