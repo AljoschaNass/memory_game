@@ -95,34 +95,73 @@
         }
     }
 
-    // Exit button (Game)
     &--exit {
-        background-color: var(--color-exit-btn);
+        background-color: rgba(map-get(var.$coding, teal-light), 0.14);
+        box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
         color: var.$color-white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        font-weight: map-get(var.$font-weights, bold);
+        border-radius: map-get(var.$radius, sm);
+        padding: fct.px-to-rem(16) fct.px-to-rem(24);
+        border: none;
 
         img {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
+        }
+
+        &:hover {
+            background-color: rgba(map-get(var.$coding, teal-light), 0.26);
+            box-shadow: 
+                inset 0 0 0 3px map-get(var.$coding, teal),
+                4px 4px 6px 0 rgba(map-get(var.$coding, teal), 0.2);
+            opacity: 1;
         }
     }
 
-    // Popup buttons
     &--no {
-        background-color: transparent;
-        border: 2px solid var(--color-accent);
-        color: var(--color-accent);
+        background-color: map-get(var.$coding, teal-mid);
+        color: var.$color-white;
+        font-weight: map-get(var.$font-weights, bold);
+        border: none;
+        border-radius: map-get(var.$radius, sm);
+        padding: fct.px-to-rem(16) fct.px-to-rem(24);
+
+        &:hover {
+            background-color: rgba(map-get(var.$coding, teal-mid), 0.7);
+            box-shadow: inset 0 0 0 3px map-get(var.$coding, teal-dark);
+            opacity: 1;
+        }
     }
 
     &--yes {
-        background-color: var(--color-accent);
+        background-color: rgba(map-get(var.$coding, teal-light), 0.14);
+        box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
         color: var.$color-white;
+        font-weight: map-get(var.$font-weights, bold);
+        border: none;
+        border-radius: map-get(var.$radius, sm);
+        padding: fct.px-to-rem(16) fct.px-to-rem(24);
+
+        &:hover {
+            background-color: rgba(map-get(var.$coding, teal-light), 0.26);
+            opacity: 1;
+        }
     }
 
-    // Back to start (Winner)
     &--back {
-        background-color: transparent;
-        border: 2px solid var.$color-white;
+        background-color: rgba(map-get(var.$coding, teal-light), 0.20);
+        box-shadow: inset 0 0 0 1px map-get(var.$coding, teal);
         color: var.$color-white;
+        font-family: var.$font-display;
+        font-size: fct.px-to-rem(24);
+        font-weight: map-get(var.$font-weights, bold);
+        border: none;
+        padding: fct.px-to-rem(16) fct.px-to-rem(24);
+
+        &:hover {
+            background-color: rgba(map-get(var.$coding, teal-light), 0.35);
+            box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
+            opacity: 1;
+        }
     }
 }
