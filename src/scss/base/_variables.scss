@@ -1,30 +1,38 @@
+// ============================================================
+// FONTS
+// ============================================================
 $font-primary: 'Almarai', sans-serif;
 $font-display: 'Red Rose', sans-serif;
-$font-gaming: 'Orbitron', sans-serif;
+$font-gaming:  'Orbitron', sans-serif;
 
-// Breakpoints
+// ============================================================
+// BREAKPOINTS
+// ============================================================
 $breakpoints: (
     zero: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px
+    sm:   576px,
+    md:   768px,
+    lg:   992px,
+    xl:   1200px
 );
 
-// Spacing
+// ============================================================
+// SPACING
+// ============================================================
 $spacing: (
     xs:   4px,
     sm:   8px,
-     m:   12px,
+    m:    12px,
     md:   16px,
     lg:   24px,
     xl:   32px,
     xxl:  44px,
     xxxl: 54px
-
 );
 
-// Border radius
+// ============================================================
+// BORDER RADIUS
+// ============================================================
 $radius: (
     sm:   6px,
     md:   12px,
@@ -32,7 +40,9 @@ $radius: (
     full: 9999px
 );
 
-// Font sizes
+// ============================================================
+// FONT SIZES
+// ============================================================
 $font-sizes: (
     sm:   14px,
     md:   16px,
@@ -41,27 +51,75 @@ $font-sizes: (
     xxl:  64px
 );
 
-// Font weights
+// ============================================================
+// FONT WEIGHTS
+// ============================================================
 $font-weights: (
     regular: 400,
     bold:    700
 );
 
-// Players
-$player-blue:   #2BB1FF;
-$player-orange: #F58E39;
+// ============================================================
+// GLOBAL UI COLORS
+// ============================================================
+$color-white:    #ffffff;
+$color-black:    #000000;
+$color-yellow:   #F0EA6E;
+$primary-dark:   #303131;
+$color-home-bg:  #303131;
 
-// UI colors (theme-unabhängig)
-$color-home-bg: #303131;
-$primary-dark: #303131;
-$color-white:  #ffffff;
-$color-black:  #000000;
-$color-yellow: #F0EA6E;
+$player-blue:    #2BB1FF;
+$player-orange:  #F58E39;
 
-// Card images per theme (18 Karten, davon max 18 Paare)
+// ============================================================
+// CODING THEME
+// ============================================================
+$coding: (
+    bg:                  #303131,
+    card-front:          #4DB6AC,
+    card-back:           #3D3D4E,
+    accent:              #4DB6AC,
+    text:                #ffffff,
+    header-bg:           #3D3D4E,
+
+    // Türkis Palette
+    teal-light:          #86E9D6,
+    teal-mid:            #66CFBC,
+    teal:                #4DD5BC,
+    teal-dark:           #3ABCA4,
+);
+
+// ============================================================
+// GAMING THEME
+// ============================================================
+$gaming: (
+    bg:                  #294f60,
+    card-front:          #C2185B,
+    card-back:           #7B1FA2,
+    accent:              #C2185B,
+    text:                #ffffff,
+    header-bg:           #000000,   // TODO
+
+    // Gaming Palette
+    teal-light:          #000000,   // TODO
+    teal-mid:            #000000,   // TODO
+    teal:                #000000,   // TODO
+    teal-dark:           #000000,   // TODO
+);
+
+// ============================================================
+// THEMES MAP (für apply-theme Mixin)
+// ============================================================
+$themes: (
+    coding: $coding,
+    gaming: $gaming
+);
+
+// ============================================================
+// CARD LISTS
+// ============================================================
 $coding-cards: (
     "coding-angular",
-    "coding-back",
     "coding-bootstrap",
     "coding-css",
     "coding-database",
@@ -100,23 +158,4 @@ $gaming-cards: (
     "gaming-squidround",
     "gaming-squidsquare",
     "gaming-squidtri"
-);
-
-$themes: (
-    code-vibes: (
-        bg:          #303131,
-        card-front:  #4DB6AC,
-        card-back:   #3D3D4E,
-        accent:      #4DB6AC,
-        text:        #ffffff,
-        exit-btn:    #3D3D4E,
-    ),
-    gaming: (
-        bg:          #294f60,
-        card-front:  #C2185B,
-        card-back:   #7B1FA2,
-        accent:      #C2185B,
-        text:        #ffffff,
-        exit-btn:    #C62828,
-    )
 );
