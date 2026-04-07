@@ -2,5 +2,5 @@
 @use "../base/variables" as var;
 
 .theme-gaming {
-    @include mx.apply-theme(gaming);
+    @include mx.apply-theme(var.$gaming);
 }
