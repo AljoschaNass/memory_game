@@ -330,11 +330,12 @@ function showWinner(): void {
     if (blue === orange) {
         winnerName.textContent = "It's a draw!";
         winnerName.className   = 'winner__name';
+        winnerIcon.src         = `/projects/banana/src/assets/icons/chess_pawn_white.svg`;
     } else {
         const winner = blue > orange ? 'blue' : 'orange';
         winnerName.textContent = `${winner.charAt(0).toUpperCase() + winner.slice(1)} Player`;
         winnerName.className   = `winner__name winner__name--${winner}`;
-        winnerIcon.src         = `/icons/player-${winner}.svg`;
+        winnerIcon.src         = `/projects/banana/src/assets/icons/chess_pawn_${winner}.svg`;
     }
 
     showView('winner');
