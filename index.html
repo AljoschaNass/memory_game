@@ -151,11 +151,11 @@
             <p class="gameover__subtitle">Final score</p>
             <div class="gameover__scores">
                 <div class="score score--blue">
-                    <img src="/icons/player.svg" alt="" />
+                    <img src="/src/assets/icons/player-blue.svg" alt="blue player" />
                     <span id="final-score-blue">0</span>
                 </div>
                 <div class="score score--orange">
-                    <img src="/icons/player.svg" alt="" />
+                    <img src="/src/assets/icons/player-orange.svg" alt="orange player" />
                     <span id="final-score-orange">0</span>
                 </div>
             </div>
@@ -164,6 +164,7 @@
 
     <!-- ==================== WINNER ==================== -->
     <section class="view view--winner" id="view-winner">
+        <img class="winner__confetti" src="/src/assets/icons/confetti.svg" alt="" aria-hidden="true" />
         <div class="winner">
             <p class="winner__subtitle">The winner is</p>
             <h2 class="winner__name" id="winner-name">Blue Player</h2>
@@ -175,7 +176,7 @@
     </section>
 
     <!-- ==================== POPUP ==================== -->
-    <div class="popup" id="popup" aria-hidden="true">
+    <div class="popup" id="popup">
         <div class="popup__box">
             <p class="popup__text">Are you sure you want to quit the game?</p>
             <div class="popup__actions">
