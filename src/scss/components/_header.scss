@@ -6,13 +6,18 @@
     @include mx.flex-center(row);
     justify-content: space-between;
     padding: map-get(var.$spacing, sm) map-get(var.$spacing, lg);
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: map-get(var.$radius, md);
     width: 100%;
 
     &__scores {
         @include mx.flex-center(row);
         gap: map-get(var.$spacing, sm);
+        background-color: rgba(map-get(var.$coding, teal-light), 0.2);
+
+        & span {
+            font-family: var.$font-display;
+            font-size: fct.px-to-rem(24);
+            font-weight: 700;
+        }
     }
 
     &__current {
