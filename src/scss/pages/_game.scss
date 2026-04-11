@@ -8,7 +8,9 @@
 }
 
 .game {
-    @include mx.flex-center(column);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     padding: map-get(var.$spacing, xl);
     gap: map-get(var.$spacing, xl);
