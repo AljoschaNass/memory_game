@@ -115,7 +115,7 @@ function applyTheme(theme: Theme): void {
 
 function updateSettingsPreview(theme: Theme): void {
     settingsPreview.innerHTML = `
-        <img src="/projects/banana/src/assets/previews/${theme}-preview.svg" alt="${theme} preview" />
+        <img src="/projects/memory_game/src/assets/previews/${theme}-preview.svg" alt="${theme} preview" />
     `;
 }
 
@@ -193,7 +193,7 @@ function createCards(theme: Theme, size: BoardSize): CardData[] {
     return paired.map((name, index) => ({
         id: index,
         name,
-        imagePath: `/projects/banana/src/assets/cards/${name}.svg`,
+        imagePath: `/projects/memory_game/src/assets/cards/${name}.svg`,
         isFlipped: false,
         isMatched: false
     }));
@@ -207,7 +207,7 @@ function renderBoard(): void {
     board.innerHTML = '';
 
     state.cards.forEach(card => {
-        const coverPath = `/projects/banana/src/assets/cards/${theme}-cover.svg`;
+        const coverPath = `/projects/memory_game/src/assets/cards/${theme}-cover.svg`;
 
         const btn = document.createElement('button');
         btn.classList.add('card');
@@ -237,7 +237,7 @@ function updateScoreDisplay(): void {
 
 function updateCurrentPlayerDisplay(): void {
     const color = state.currentPlayer;
-    currentPlayerIcon.src = `/projects/banana/src/assets/icons/player-${color}.svg`;
+    currentPlayerIcon.src = `/projects/memory_game/src/assets/icons/player-${color}.svg`;
 }
 
 function switchPlayer(): void {
@@ -330,12 +330,12 @@ function showWinner(): void {
     if (blue === orange) {
         winnerName.textContent = "It's a draw!";
         winnerName.className   = 'winner__name';
-        winnerIcon.src         = `/projects/banana/src/assets/icons/chess_pawn_white.svg`;
+        winnerIcon.src         = `/projects/memory_game/src/assets/icons/chess_pawn_white.svg`;
     } else {
         const winner = blue > orange ? 'blue' : 'orange';
         winnerName.textContent = `${winner.charAt(0).toUpperCase() + winner.slice(1)} Player`;
         winnerName.className   = `winner__name winner__name--${winner}`;
-        winnerIcon.src         = `/projects/banana/src/assets/icons/chess_pawn_${winner}.svg`;
+        winnerIcon.src         = `/projects/memory_game/src/assets/icons/chess_pawn_${winner}.svg`;
     }
 
     showView('winner');
