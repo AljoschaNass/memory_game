@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: "/projects/banana/"
+  base: "/projects/memory_game/"
 });
