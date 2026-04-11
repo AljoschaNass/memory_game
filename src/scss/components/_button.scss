@@ -100,7 +100,6 @@
         box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
         color: var.$color-white;
         font-weight: map-get(var.$font-weights, bold);
-        border-radius: map-get(var.$radius, sm);
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
         border: none;
 
@@ -121,9 +120,9 @@
     &--no {
         background-color: map-get(var.$coding, teal-mid);
         color: var.$color-white;
+        font-size: fct.px-to-rem(20);
         font-weight: map-get(var.$font-weights, bold);
         border: none;
-        border-radius: map-get(var.$radius, sm);
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
 
         &:hover {
@@ -136,10 +135,10 @@
     &--yes {
         background-color: rgba(map-get(var.$coding, teal-light), 0.14);
         box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
-        color: var.$color-white;
+        color: map-get(var.$coding, teal);
+        font-size: fct.px-to-rem(20);
         font-weight: map-get(var.$font-weights, bold);
         border: none;
-        border-radius: map-get(var.$radius, sm);
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
 
         &:hover {
