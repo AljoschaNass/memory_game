@@ -8,8 +8,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     @include mx.flex-center();
     z-index: 100;
-
-    // Versteckt per default
     display: none;
 
     &.is-active {
@@ -18,16 +16,15 @@
 
     &__box {
         background-color: var.$color-white;
-        border-radius: map-get(var.$radius, lg);
-        padding: map-get(var.$spacing, xl);
+        padding: map-get(var.$spacing, xxl);
         @include mx.flex-center(column);
-        gap: map-get(var.$spacing, lg);
-        max-width: 400px;
-        width: 90%;
+        gap: map-get(var.$spacing, xxxl);
+        width: 540px;
     }
 
     &__text {
-        font-size: map-get(var.$font-sizes, md);
+        font-family: var.$font-display;
+        font-size: fct.px-to-rem(32);
         font-weight: map-get(var.$font-weights, bold);
         color: var.$color-black;
         text-align: center;
