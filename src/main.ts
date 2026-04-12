@@ -377,7 +377,7 @@ function resetToHome(): void {
     applyTheme('coding');
     updateSettingsBar();
     checkSettingsComplete();
-    document.body.classList.remove('theme-coding', 'theme-gaming');
+    // document.body.classList.remove('theme-coding', 'theme-gaming');
 
     showView('home');
 }
