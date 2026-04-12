@@ -164,3 +164,50 @@
         }
     }
 }
+
+.theme-gaming {
+    .btn--exit {
+        background-color: rgba(map-get(var.$gaming, pink), 0.08);
+        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+
+        &:hover {
+            background-color: rgba(map-get(var.$gaming, pink), 0.14);
+            box-shadow: 
+                inset 0 0 0 3px map-get(var.$gaming, pink-border),
+                4px 4px 6px 0 rgba(map-get(var.$gaming, pink-border), 0.2);
+            opacity: 1;
+        }
+    }
+
+    .btn--no {
+        background-color: map-get(var.$gaming, pink);
+        box-shadow: inset 0 0 0 1px map-get(var.$gaming, pink-border);
+
+        &:hover {
+            background-color: rgba(map-get(var.$gaming, pink), 0.7);
+            box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
+            opacity: 1;
+        }
+    }
+
+    .btn--yes {
+        background-color: rgba(map-get(var.$gaming, pink), 0.18);
+        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+        color: map-get(var.$gaming, pink);
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+
+    .btn--back {
+        background-color: rgba(map-get(var.$gaming, pink), 0.08);
+        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+
+        &:hover {
+            background-color: rgba(map-get(var.$gaming, pink), 0.14);
+            box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
+            opacity: 1;
+        }
+    }
+}

@@ -52,3 +52,9 @@
         color: #F58E39;
     }
 }
+
+.theme-gaming {
+    .game-header__scores {
+        background-color: rgba(map-get(var.$gaming, header-bg), 0.20);
+    }
+}
