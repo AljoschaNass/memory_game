@@ -51,7 +51,33 @@
         }
     }
 
-    .game-header__scores {
+    .game-header {
+        height: 62px;
+        margin-top: 41px;
         background-color: rgba(map-get(var.$coding, header-bg), 1);
+
+        &__scores {
+            background-color: rgba(map-get(var.$coding, teal-light), 0.2);
+
+             & span {
+            font-family: var.$font-display;
+            font-size: fct.px-to-rem(24);
+            font-weight: 700;
+        }
+        }
+        
+        &__current {
+            span {
+                font-family: var.$font-display;
+                font-size: fct.px-to-rem(26);
+                font-weight: map-get(var.$font-weights, regular);
+                letter-spacing: 7%;
+            }
+        }
+    }
+
+    .card {
+        width: 120px;
+        aspect-ratio: 1 / 1;
     }
 }
