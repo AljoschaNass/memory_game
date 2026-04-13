@@ -119,18 +119,20 @@
                 <div class="game-header__scores">
                     <div class="score score--blue" id="score-blue">
                         <img src="/src/assets/icons/player-blue.svg" alt="blue player" />
-                            <span>Blue</span>
+                        <span id="score-blue-label">Blue</span>
                         <span id="score-blue-value">0</span>
                     </div>
                     <div class="score score--orange" id="score-orange">
                         <img src="/src/assets/icons/player-orange.svg" alt="orange player" />
-                        <span>Orange</span>
+                        <span id="score-orange-label">Orange</span>
                         <span id="score-orange-value">0</span>
                     </div>
                 </div>
                 <div class="game-header__current">
                     <span>Current player:</span>
-                    <img class="current-player-icon" id="current-player-icon" src="/icons/player.svg" alt="current player" />
+                    <div id="current-player-wrapper" class="current-player-wrapper">
+                        <img class="current-player-icon" id="current-player-icon" src="/icons/player.svg" alt="current player" />
+                    </div>
                 </div>
                 <button class="btn btn--exit" id="btn-exit">
                     <img class="btn__icon--default" src="/src/assets/icons/exit-white.svg" alt="exit" />

@@ -3,8 +3,6 @@
 @use "../base/variables" as var;
 
 .card {
-    width: 120px;
-    aspect-ratio: 1 / 1;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -31,24 +29,15 @@
             object-fit: contain;
         }
 
-        // Vorderseite (Kartenrückseite im Spiel = Cover)
-        &--front {
-            background-color: var(--color-card-front);
-        }
-
-        // Rückseite (aufgedeckte Karte = Icon)
         &--back {
-            background-color: var.$color-white;
             transform: rotateY(180deg);
         }
     }
 
-    // Aufgedeckt
     &.is-flipped .card__inner {
         transform: rotateY(180deg);
     }
 
-    // Gefunden / matched
     &.is-matched .card__face--front {
         border: 3px solid var(--color-accent);
     }
