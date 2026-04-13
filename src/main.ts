@@ -142,7 +142,6 @@ function updateSettingsBar(): void {
 }
 
 function initSettingsListeners(): void {
-    // Theme radios
     document.querySelectorAll<HTMLInputElement>('input[name="theme"]').forEach(radio => {
         radio.addEventListener('change', () => {
             state.settings.theme = radio.value as Theme;
@@ -153,7 +152,6 @@ function initSettingsListeners(): void {
         });
     });
 
-    // Player radios
     document.querySelectorAll<HTMLInputElement>('input[name="player"]').forEach(radio => {
         radio.addEventListener('change', () => {
             state.settings.player = radio.value as Player;
@@ -162,7 +160,6 @@ function initSettingsListeners(): void {
         });
     });
 
-    // Size radios
     document.querySelectorAll<HTMLInputElement>('input[name="size"]').forEach(radio => {
         radio.addEventListener('change', () => {
             state.settings.size = Number(radio.value) as BoardSize;
@@ -237,12 +234,53 @@ function updateScoreDisplay(): void {
 
 function updateCurrentPlayerDisplay(): void {
     const color = state.currentPlayer;
-    currentPlayerIcon.src = `/projects/memory_game/src/assets/icons/player-${color}.svg`;
+    const icon = document.getElementById('current-player-icon') as HTMLImageElement;
+    const wrapper = document.getElementById('current-player-wrapper');
+
+    if (state.settings.theme === 'gaming') {
+        icon.src = `/projects/memory_game/src/assets/icons/chess_pawn_white.svg`;
+        if (wrapper) {
+            wrapper.style.backgroundColor = color === 'blue' ? '#2BB1FF' : '#F58E39';
+        }
+    } else {
+        icon.src = `/projects/memory_game/src/assets/icons/player-${color}.svg`;
+        if (wrapper) {
+            wrapper.style.backgroundColor = 'transparent';
+            wrapper.style.padding = '0';
+        }
+    }
 }
 
 function switchPlayer(): void {
     state.currentPlayer = state.currentPlayer === 'blue' ? 'orange' : 'blue';
     updateCurrentPlayerDisplay();
+}
+
+function applyScoreLayout(theme: Theme): void {
+    const blueLabel   = document.getElementById('score-blue-label');
+    const orangeLabel = document.getElementById('score-orange-label');
+    const blueIcon    = document.querySelector('#score-blue img') as HTMLImageElement;
+    const orangeIcon  = document.querySelector('#score-orange img') as HTMLImageElement;
+    const currentIcon = document.getElementById('current-player-icon') as HTMLImageElement;
+
+    if (theme === 'gaming') {
+        // Labels ausblenden
+        if (blueLabel)   blueLabel.style.display   = 'none';
+        if (orangeLabel) orangeLabel.style.display = 'none';
+
+        // Gaming Icons
+        if (blueIcon)   blueIcon.src   = `/projects/memory_game/src/assets/icons/chess_pawn_blue.svg`;
+        if (orangeIcon) orangeIcon.src = `/projects/memory_game/src/assets/icons/chess_pawn_orange.svg`;
+
+    } else {
+        // Labels einblenden
+        if (blueLabel)   blueLabel.style.display   = 'inline';
+        if (orangeLabel) orangeLabel.style.display = 'inline';
+
+        // Coding Icons
+        if (blueIcon)   blueIcon.src   = `/projects/memory_game/src/assets/icons/player-blue.svg`;
+        if (orangeIcon) orangeIcon.src = `/projects/memory_game/src/assets/icons/player-orange.svg`;
+    }
 }
 
 function checkForMatch(): void {
@@ -266,7 +304,6 @@ function checkForMatch(): void {
 
         checkGameOver();
     } else {
-        // Kein Match – nach kurzer Zeit wieder zuklappen
         setTimeout(() => {
             const flippedEls = board.querySelectorAll<HTMLButtonElement>(
                 `[data-id="${first.id}"], [data-id="${second.id}"]`
@@ -359,6 +396,7 @@ function startGame(): void {
     updateCurrentPlayerDisplay();
     renderBoard();
     showView('game');
+    applyScoreLayout(state.settings.theme!);
 }
 
 function resetToHome(): void {
@@ -398,34 +436,27 @@ function hidePopup(): void {
 // ============================================================
 
 function initEventListeners(): void {
-    // Home → Settings
     document.getElementById('btn-go-to-settings')!
         .addEventListener('click', () => showView('settings'));
 
-    // Settings → Game
     document.getElementById('btn-start')!
         .addEventListener('click', startGame);
 
-    // Game → Popup
     document.getElementById('btn-exit')!
         .addEventListener('click', showPopup);
 
-    // Popup: zurück
     document.getElementById('btn-popup-no')!
         .addEventListener('click', hidePopup);
 
-    // Popup: beenden
     document.getElementById('btn-popup-yes')!
         .addEventListener('click', () => {
             hidePopup();
             resetToHome();
         });
 
-    // Winner → Home
     document.getElementById('btn-back-to-start')!
         .addEventListener('click', resetToHome);
 
-    // Board click (Event Delegation)
     board.addEventListener('click', handleCardClick);
 }
 
