@@ -8,6 +8,17 @@
     .btn--exit {
         background-color: rgba(map-get(var.$gaming, pink), 0.08);
         box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+        border-radius: 10px;
+
+        img {
+            width: 26px;
+            height: auto;
+        }
+
+        span {
+        font-size: fct.px-to-rem(20);
+        font-family: var.$font-gaming;
+        }
 
         .btn__icon--default { display: block; }
         .btn__icon--hover { display: none; }
@@ -25,6 +36,7 @@
 
     .btn--no {
         background-color: map-get(var.$gaming, pink);
+        border-radius: 10px;
 
         &:hover {
             background-color: rgba(map-get(var.$gaming, pink), 0.7);
@@ -36,6 +48,7 @@
         background-color: rgba(map-get(var.$gaming, pink), 0.18);
         box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
         color: map-get(var.$gaming, pink);
+        border-radius: 10px;
     }
 
     .btn--back {
@@ -43,6 +56,7 @@
         box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
         font-family: var.$font-gaming;
         font-size: fct.px-to-rem(20);
+        border-radius: 10px;
 
         &:hover {
             background-color: rgba(map-get(var.$gaming, pink), 0.14);
@@ -50,8 +64,55 @@
         }
     }
 
-    .game-header__scores {
-        background-color: rgba(map-get(var.$gaming, header-bg), 0.20);
+    .game-header {
+        height: 102px;
+        margin-top: 41px;
+        border-radius: 10px;
+        background-color: rgba(map-get(var.$gaming, header-bg), 0.2);
+
+        &__scores {
+            background-color: var.$color-white;
+            border-radius: 10px;
+            padding: 4px 8px;
+
+            span {
+                font-size: fct.px-to-rem(30);
+                font-family: var.$font-gaming;
+            }
+
+        }
+
+        &__current {
+            span {
+                font-family: var.$font-gaming;
+                font-size: fct.px-to-rem(32);
+                font-weight: map-get(var.$font-weights, bold);
+                letter-spacing: 7%;
+            }
+        }
+    }
+
+    .score {
+        font-family: var.$font-gaming;
+        font-size: fct.px-to-rem(30);
+        gap: 8px;
+
+        img {
+            width: 22px;
+            height: 28px;
+        }
+
+    }
+
+    .current-player-wrapper {
+        border-radius: 3px;
+        padding: 4px 8px;
+        margin-left: 10px;
+
+        img {
+            width: 25px;
+            height: 32px;
+        }
     }
 
     .popup__box {
@@ -60,5 +121,11 @@
 
     .popup__text {
         color: map-get(var.$gaming, popup-font);
+    }
+
+    .card {
+        width: 105px;
+        height: 120px;
+        aspect-ratio: unset;
     }
 }
