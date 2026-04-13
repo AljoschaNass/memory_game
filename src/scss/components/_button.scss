@@ -16,7 +16,6 @@
         opacity: 0.85;
     }
 
-    // Play button (Home)
     &--play {
         background-color: var.$color-yellow;
         color: var.$primary-dark;
@@ -57,7 +56,6 @@
         }
     }
 
-    // Start button (Settings)
     &--start {
         background-color: var.$color-yellow;
         color: var.$primary-dark;
@@ -96,8 +94,6 @@
     }
 
     &--exit {
-        background-color: rgba(map-get(var.$coding, teal-light), 0.14);
-        box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
         color: var.$color-white;
         font-weight: map-get(var.$font-weights, bold);
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
@@ -109,16 +105,11 @@
         }
 
         &:hover {
-            background-color: rgba(map-get(var.$coding, teal-light), 0.26);
-            box-shadow: 
-                inset 0 0 0 3px map-get(var.$coding, teal),
-                4px 4px 6px 0 rgba(map-get(var.$coding, teal), 0.2);
             opacity: 1;
         }
     }
 
     &--no {
-        background-color: map-get(var.$coding, teal-mid);
         color: var.$color-white;
         font-size: fct.px-to-rem(20);
         font-weight: map-get(var.$font-weights, bold);
@@ -126,88 +117,33 @@
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
 
         &:hover {
-            background-color: rgba(map-get(var.$coding, teal-mid), 0.7);
-            box-shadow: inset 0 0 0 3px map-get(var.$coding, teal-dark);
             opacity: 1;
         }
     }
 
     &--yes {
-        background-color: rgba(map-get(var.$coding, teal-light), 0.14);
-        box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
-        color: map-get(var.$coding, teal);
         font-size: fct.px-to-rem(20);
         font-weight: map-get(var.$font-weights, bold);
         border: none;
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
 
         &:hover {
-            background-color: rgba(map-get(var.$coding, teal-light), 0.26);
             opacity: 1;
         }
     }
 
     &--back {
-        background-color: rgba(map-get(var.$coding, teal-light), 0.20);
-        box-shadow: inset 0 0 0 1px map-get(var.$coding, teal);
         color: var.$color-white;
-        font-family: var.$font-display;
-        font-size: fct.px-to-rem(24);
         font-weight: map-get(var.$font-weights, bold);
         border: none;
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
 
         &:hover {
-            background-color: rgba(map-get(var.$coding, teal-light), 0.35);
-            box-shadow: inset 0 0 0 2px map-get(var.$coding, teal);
             opacity: 1;
         }
     }
 }
 
-.theme-gaming {
-    .btn--exit {
-        background-color: rgba(map-get(var.$gaming, pink), 0.08);
-        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
-
-        &:hover {
-            background-color: rgba(map-get(var.$gaming, pink), 0.14);
-            box-shadow: 
-                inset 0 0 0 3px map-get(var.$gaming, pink-border),
-                4px 4px 6px 0 rgba(map-get(var.$gaming, pink-border), 0.2);
-            opacity: 1;
-        }
-    }
-
-    .btn--no {
-        background-color: map-get(var.$gaming, pink);
-        box-shadow: inset 0 0 0 1px map-get(var.$gaming, pink-border);
-
-        &:hover {
-            background-color: rgba(map-get(var.$gaming, pink), 0.7);
-            box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
-            opacity: 1;
-        }
-    }
-
-    .btn--yes {
-        background-color: rgba(map-get(var.$gaming, pink), 0.18);
-        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
-        color: map-get(var.$gaming, pink);
-
-        &:hover {
-            opacity: 0.85;
-        }
-    }
-
-    .btn--back {
-        background-color: rgba(map-get(var.$gaming, pink), 0.08);
-        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
-
-        &:hover {
-            background-color: rgba(map-get(var.$gaming, pink), 0.14);
-            box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
-            opacity: 1;
-        }
-    }
-}
+// .btn__icon--hover {
+//     display: none;
+// }
