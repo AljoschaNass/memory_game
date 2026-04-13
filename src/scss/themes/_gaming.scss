@@ -1,6 +1,64 @@
 @use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
 @use "../base/variables" as var;
 
 .theme-gaming {
     @include mx.apply-theme(var.$gaming);
+
+    .btn--exit {
+        background-color: rgba(map-get(var.$gaming, pink), 0.08);
+        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+
+        .btn__icon--default { display: block; }
+        .btn__icon--hover { display: none; }
+
+        &:hover {
+            background-color: rgba(map-get(var.$gaming, pink), 0.14);
+            box-shadow: 
+                inset 0 0 0 3px map-get(var.$gaming, pink-border),
+                4px 4px 6px 0 rgba(map-get(var.$gaming, pink-border), 0.2);
+
+            .btn__icon--default { display: none; }
+            .btn__icon--hover { display: block; }
+        }
+    }
+
+    .btn--no {
+        background-color: map-get(var.$gaming, pink);
+
+        &:hover {
+            background-color: rgba(map-get(var.$gaming, pink), 0.7);
+            box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
+        }
+    }
+
+    .btn--yes {
+        background-color: rgba(map-get(var.$gaming, pink), 0.18);
+        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+        color: map-get(var.$gaming, pink);
+    }
+
+    .btn--back {
+        background-color: rgba(map-get(var.$gaming, pink), 0.08);
+        box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
+        font-family: var.$font-gaming;
+        font-size: fct.px-to-rem(20);
+
+        &:hover {
+            background-color: rgba(map-get(var.$gaming, pink), 0.14);
+            box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
+        }
+    }
+
+    .game-header__scores {
+        background-color: rgba(map-get(var.$gaming, header-bg), 0.20);
+    }
+
+    .popup__box {
+        background-color: map-get(var.$gaming, popup-bg);
+    }
+
+    .popup__text {
+        color: map-get(var.$gaming, popup-font);
+    }
 }
