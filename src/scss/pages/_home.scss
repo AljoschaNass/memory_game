@@ -4,11 +4,16 @@
 
 .view--home {
     background-color: var.$color-home-bg;
-    width: 1440px;
-    height: 1024px;
+    width: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+
+    @include mx.respond(xl, xxl) {
+        max-width: 1440px;
+        height: 1024px;
+    }
 }
 
 .home {
@@ -16,34 +21,58 @@
     height: 100%;
     position: relative;
     @include mx.flex-center(column);
-    padding-left: 120px;
+
+    @include mx.respond(zero, md) {
+        padding-left: map-get(var.$spacing, lg);
+        align-items: center;
+    }
 
     &__content {
         @include mx.flex-center(column);
+        height: 100vh;
         z-index: 1;
     }
 
     &__subtitle {
         color: var.$color-white;
-        font-size: fct.px-to-rem(48);
         align-self: flex-start;
+        font-size: fct.px-to-rem(48);
+
+        @include mx.respond(md, xl) {
+            font-size: fct.px-to-rem(32);
+        }
+
+        @include mx.respond(zero, md) {
+            font-size: fct.px-to-rem(20);
+        }
     }
 
     &__title {
         color: var.$color-white;
-        font-size: fct.px-to-rem(140);
         font-weight: map-get(var.$font-weights, bold);
         font-family: var.$font-display;
+        font-size: fct.px-to-rem(140);
+
+        @include mx.respond(lg, xxl) {
+            font-size: fct.px-to-rem(100);
+        }
+
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(72);
+        }
+
+        @include mx.respond(zero, md) {
+            font-size: fct.px-to-rem(48);
+        }
     }
 
-    // Dekorativer Controller unten links
     &__deco {
         position: absolute;
-        left: -88px;
-        width: 414px;
-        height: 301px;
+        top: 53vh;
+        left: -6vw;
+        width: 28vw;
+        height: auto;
         pointer-events: none;
         z-index: 0;
-        top: 546px;
     }
 }

@@ -9,11 +9,13 @@ $font-gaming:  'Orbitron', sans-serif;
 // BREAKPOINTS
 // ============================================================
 $breakpoints: (
-    zero: 0,
-    sm:   576px,
-    md:   768px,
-    lg:   992px,
-    xl:   1200px
+    zero:  0px,
+    xs:    480px,
+    sm:    576px,
+    md:    768px,
+    lg:    992px,
+    xl:    1200px,
+    xxl:   1440px
 );
 
 // ============================================================
@@ -76,8 +78,6 @@ $player-orange:  #F58E39;
 // ============================================================
 $coding: (
     bg:                  #303131,
-    card-front:          #4DB6AC,
-    card-back:           #3D3D4E,
     accent:              #4DB6AC,
     text:                #ffffff,
     header-bg:           #3D3D4E,
@@ -94,8 +94,6 @@ $coding: (
 // ============================================================
 $gaming: (
     bg:                  #294f60,
-    card-front:          #C2185B,
-    card-back:           #7B1FA2,
     accent:              #C2185B,
     text:                #ffffff,
     header-bg:           #FD96C9,

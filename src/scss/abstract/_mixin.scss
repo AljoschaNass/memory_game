@@ -9,8 +9,8 @@
 }
 
 // Responsive
-@mixin respond($minsize: zero) {
-    @media screen and (min-width: map-get(var.$breakpoints, $minsize)) {
+@mixin respond($minsize: zero, $maxsize: xl) {
+    @media screen and (min-width: map-get(var.$breakpoints, $minsize)) and (max-width: map-get(var.$breakpoints, $maxsize)) {
         @content;
     }
 }
