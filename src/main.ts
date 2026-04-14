@@ -374,6 +374,12 @@ function showWinner(): void {
         winnerName.className   = `winner__name winner__name--${winner}`;
         winnerIcon.src         = `/projects/memory_game/src/assets/icons/chess_pawn_${winner}.svg`;
     }
+    if (state.settings.theme === 'gaming') {
+        winnerIcon.src = `/projects/memory_game/src/assets/icons/pokal.svg`;
+    } else {
+        const winner = blue > orange ? 'blue' : 'orange';
+        winnerIcon.src = `/projects/memory_game/src/assets/icons/chess_pawn_${blue === orange ? 'white' : winner}.svg`;
+    }
 
     showView('winner');
 }
