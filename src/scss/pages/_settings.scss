@@ -1,0 +1,282 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.view--settings {
+    background-color: var.$color-white;
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @include mx.respond(xl, xxl) {
+        width: 1440px;
+        height: 1024px;
+    }
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: map-get(var.$spacing, xl);
+    padding: 80px 120px;
+    height: 100%;
+
+    // Tablet
+    @include mx.respond(md, lg) {
+        padding: 60px 80px;
+        gap: map-get(var.$spacing, lg);
+    }
+
+    // Mobil – einspaltiges Layout
+    @include mx.respond(zero, md) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        padding: map-get(var.$spacing, lg);
+        gap: map-get(var.$spacing, lg);
+    }
+
+    &__title {
+        grid-column: 1 / -1;
+        font-size: fct.px-to-rem(54);
+        font-weight: map-get(var.$font-weights, bold);
+        font-family: var.$font-display;
+        color: var.$color-black;
+        border-bottom: 3px solid var.$color-yellow;
+        padding-bottom: map-get(var.$spacing, sm);
+        width: fit-content;
+
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(40);
+        }
+
+        @include mx.respond(zero, md) {
+            font-size: fct.px-to-rem(32);
+        }
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: map-get(var.$spacing, xxl);
+
+        @include mx.respond(md, lg) {
+            gap: map-get(var.$spacing, xl);
+        }
+
+        @include mx.respond(zero, md) {
+            gap: map-get(var.$spacing, lg);
+        }
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: map-get(var.$spacing, xl);
+        overflow: visible;
+
+        @include mx.respond(zero, md) {
+            align-items: stretch;
+        }
+    }
+
+    &__group {
+        @include mx.flex-center(column);
+        align-items: flex-start;
+        gap: map-get(var.$spacing, m);
+
+        @include mx.respond(md, lg) {
+            gap: map-get(var.$spacing, sm);
+        }
+
+        @include mx.respond(zero, md) {
+            gap: map-get(var.$spacing, xs);
+        }
+    }
+
+    &__group-title {
+        @include mx.flex-center(row);
+        gap: map-get(var.$spacing, sm);
+        font-size: fct.px-to-rem(24);
+        font-weight: map-get(var.$font-weights, bold);
+        color: var.$color-black;
+
+        @include mx.respond(lg, xl) {
+            font-size: fct.px-to-rem(20);
+        }
+
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(16);
+        }
+
+        @include mx.respond(zero, md) {
+            font-size: fct.px-to-rem(12);
+        }
+
+        img {
+            width: 32px;
+            aspect-ratio: 1/1;
+        
+            @include mx.respond(md, lg) {
+                width: 28px;
+            }
+
+            @include mx.respond(xs, md) {
+                width: 22px;
+            }
+
+            @include mx.respond(zero, xs) {
+                width: 18px;
+            }
+        }
+    }
+
+    &__preview {
+        @include mx.flex-center();
+        overflow: hidden;
+
+        img {
+            width: 32vw;
+            height: auto;
+            object-fit: cover;
+            border-radius: map-get(var.$radius, lg);
+
+            @include mx.respond(lg, xl) {
+                border-radius: map-get(var.$radius, md);
+            }
+
+            @include mx.respond(md, lg) {
+                border-radius: map-get(var.$radius, m);
+            }
+
+            @include mx.respond(zero, md) {
+                border-radius: map-get(var.$radius, xs);
+            }
+        }
+    }
+
+    &__bar {
+        grid-column: 1 / -1;
+        @include mx.flex-center(row);
+        justify-content: flex-start;
+        gap: map-get(var.$spacing, md);
+        padding: map-get(var.$spacing, md) map-get(var.$spacing, lg);
+        background-color: var.$color-settings-bar-bg;
+        white-space: nowrap;
+        width: fit-content;
+        margin-left: auto;
+
+        @include mx.respond(lg, xl) {
+            gap: map-get(var.$spacing, sm);
+            padding: map-get(var.$spacing, sm) map-get(var.$spacing, md);
+        }
+
+        @include mx.respond(md, lg) {
+            gap: map-get(var.$spacing, xs);
+            padding: map-get(var.$spacing, sm) map-get(var.$spacing, md);
+        }
+
+        @include mx.respond(zero, md) {
+            white-space: normal;
+            flex-wrap: wrap;
+            gap: map-get(var.$spacing, xs);
+            padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
+        }
+
+        &-item {
+            font-size: fct.px-to-rem(20);
+            color: var.$color-black;
+
+            @include mx.respond(lg, xl) {
+                font-size: fct.px-to-rem(16);
+            }
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(14);
+            }
+
+            @include mx.respond(zero, md) {
+                font-size: fct.px-to-rem(12);
+            }
+
+            @include mx.respond(zero, md) {
+                font-size: fct.px-to-rem(10);
+            }
+        }
+
+        &-divider {
+            color: var.$color-yellow;
+            font-weight: map-get(var.$font-weights, bold);
+            font-size: fct.px-to-rem(40);
+
+            @include mx.respond(lg, xl) {
+                font-size: fct.px-to-rem(32);
+            }
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(24);
+            }
+
+            @include mx.respond(zero, md) {
+                font-size: fct.px-to-rem(20);
+            }
+        }
+    }
+}
+
+.radio {
+    @include mx.flex-center(row);
+    padding-left: map-get(var.$spacing, xxl);
+    gap: map-get(var.$spacing, sm);
+    cursor: pointer;
+
+    @include mx.respond(md, xl) {
+        padding-left: map-get(var.$spacing, lg);
+    }
+
+    @include mx.respond(zero, md) {
+        padding-left: map-get(var.$spacing, m);
+    }
+
+    &__input {
+        accent-color: var.$primary-dark;
+        width: 20px;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+
+        @include mx.respond(lg, xl) {
+            width: 16px;
+        }
+
+        @include mx.respond(md,lg) {
+            width: 14px;
+        }
+
+        @include mx.respond(zero, md) {
+            width: 12px;
+        }
+    }
+
+    &__label {
+        font-size: fct.px-to-rem(20);
+        color: var.$primary-dark;
+
+        @include mx.respond(lg, xl) {
+            font-size: fct.px-to-rem(16);
+        }
+
+        @include mx.respond(md,lg) {
+            font-size: fct.px-to-rem(14);
+        }
+
+        @include mx.respond(zero, md) {
+            font-size: fct.px-to-rem(12);
+        }
+    }
+
+    &__input:checked + &__label {
+        font-weight: map-get(var.$font-weights, bold);
+    }
+}

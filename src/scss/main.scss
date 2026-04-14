@@ -19,10 +19,10 @@
 @use "components/card";
 @use "components/header";
 @use "components/popup";
-@use "components/settings";
 
 // Pages
 @use "pages/home";
+@use "pages/settings";
 @use "pages/game";
 @use "pages/gameover";
 @use "pages/winner";
