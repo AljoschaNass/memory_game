@@ -128,4 +128,59 @@
         height: 120px;
         aspect-ratio: unset;
     }
+
+    .gameover {
+        &__title {
+            font-family: var.$font-gaming;
+            font-size: fct.px-to-rem(128);
+            letter-spacing: 7%;
+            text-transform: uppercase;
+            color: map-get(var.$gaming, pink);
+        }
+
+        &__subtitle {
+            font-family: var.$font-gaming;
+            font-size: fct.px-to-rem(28);
+            letter-spacing: 7%;
+        }
+
+        &__scores {
+            background-color: var.$color-white;
+            border-radius: 10px;
+            padding: 8px 16px;
+
+             & span {
+                font-family: var.$font-gaming;
+                font-size: fct.px-to-rem(40);
+                letter-spacing: 0;
+            }
+        }
+    }
+
+    .winner {
+        &__confetti {
+            display: none;
+        }
+
+        &__subtitle {
+            font-family: var.$font-gaming;
+            font-size: fct.px-to-rem(28);
+            letter-spacing: 7%;
+            font-weight: bold;
+        }
+
+        &__name {
+            font-family: var.$font-gaming;
+            font-size: fct.px-to-rem(64);
+            letter-spacing: 7%;
+            text-transform: unset;
+        }
+
+         &__icon {
+            width: 288px;
+            height: 344px;
+        }
+    }
+    
+    
 }

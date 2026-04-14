@@ -16,7 +16,7 @@
 
     &__confetti {
         position: absolute;
-        top: 0;
+        top: -32px;
         left: 0;
         right: 0;
         width: 100%;
@@ -49,14 +49,7 @@
         width: 200px;
         height: 250px;
         object-fit: contain;
-    }
-
-    // Konfetti wrapper
-    &__confetti {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        pointer-events: none;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 }
