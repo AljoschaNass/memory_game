@@ -10,8 +10,7 @@
     overflow: hidden;
 
     @include mx.respond(xl, xxl) {
-        width: 1440px;
-        height: 1024px;
+        max-width: 1440px;
     }
 }
 
