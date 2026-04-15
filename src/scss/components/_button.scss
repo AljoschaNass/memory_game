@@ -31,20 +31,101 @@
         justify-content: space-between;
         align-items: center;
 
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(32);
+            width: 240px;
+            height: 90px;
+            padding: map-get(var.$spacing, m) map-get(var.$spacing, lg);
+            gap: map-get(var.$spacing, xs);
+            margin-top: map-get(var.$spacing, xl);
+        }
+
+        @include mx.respond(sm, md) {
+            font-size: fct.px-to-rem(28);
+            width: 220px;
+            height: 80px;
+            padding: map-get(var.$spacing, sm) map-get(var.$spacing, md);
+            margin-top: map-get(var.$spacing, lg);
+        }
+
+        @include mx.respond(xs, sm) {
+            font-size: fct.px-to-rem(24);
+            width: 160px;
+            height: 60px;
+            padding: map-get(var.$spacing, xs) map-get(var.$spacing, m);
+            margin-top: map-get(var.$spacing, md);
+        }
+
+        @include mx.respond(zero, xs) {
+            font-size: fct.px-to-rem(24);
+            width: 120px;
+            height: 55px;
+            padding: map-get(var.$spacing, xs) map-get(var.$spacing, m);
+            margin-top: map-get(var.$spacing, md);
+        }
+
         img {
             width: 44px;
-            height: 32px;
+            aspect-ratio: 1.38 / 1;
             transition: transform 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+
+            @include mx.respond(md, lg) {
+                width: 36px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 30px;
+            }
+
+            @include mx.respond(xs, sm) {
+                width: 25px;
+            }
+
+            @include mx.respond(zero, xs) {
+                width: 20px;
+            }
         }
 
         span {
             font-size: fct.px-to-rem(40);
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(32);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(28);
+            }
+
+            @include mx.respond(xs, sm) {
+                font-size: fct.px-to-rem(24);
+            }
+
+            @include mx.respond(zero, xs) {
+                font-size: fct.px-to-rem(20);
+            }
         }
 
         &:hover img {
             width: 50px;
-            height: 36px;
+            aspect-ratio: 1.38 / 1;
             transform: rotate(-26deg);
+
+            @include mx.respond(md, lg) {
+                width: 40px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 35px;
+            }
+
+            @include mx.respond(xs, sm) {
+                width: 30px;
+            }
+
+            @include mx.respond(zero, xs) {
+                width: 25px;
+            }
         }
     }
 
@@ -60,10 +141,26 @@
         background-color: var.$color-yellow;
         color: var.$primary-dark;
         font-weight: map-get(var.$font-weights, bold);
-        height: 53px;
         width: 126px;
+        aspect-ratio: 2.4 / 1;
         padding: 14px 20px;
         gap: map-get(var.$spacing, sm);
+
+        @include mx.respond(md, lg) {
+            width: 110px;
+        }
+
+        @include mx.respond(sm, md) {
+            width: 95px;
+        }
+
+        @include mx.respond(xs, sm) {
+            width: 80px;
+        }
+
+        @include mx.respond(zero, xs) {
+            width: 65px;
+        }
 
         img {
             width: 20px;
@@ -73,23 +170,16 @@
 
         span {
             font-size: fct.px-to-rem(20);
-
-            &:hover {
-                font-size: fct.px-to-rem(22);
-            }
-        }
-
-        &:disabled {
-            background-color: #cccccc;
-            color: #888888;
-            cursor: not-allowed;
-            opacity: 1;
         }
 
         &:hover img {
             width: 25px;
             height: 20px;
             transform: rotate(-5deg);
+        }
+
+        &:hover span {
+            font-size: fct.px-to-rem(22);
         }
     }
 

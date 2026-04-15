@@ -54,16 +54,16 @@
     .game-header {
         height: 62px;
         margin-top: 41px;
-        background-color: rgba(map-get(var.$coding, header-bg), 1);
+        background-color: map-get(var.$coding, header-bg);
 
         &__scores {
             background-color: rgba(map-get(var.$coding, teal-light), 0.2);
 
-             & span {
-            font-family: var.$font-display;
-            font-size: fct.px-to-rem(24);
-            font-weight: 700;
-        }
+            span {
+                font-family: var.$font-display;
+                font-size: fct.px-to-rem(24);
+                font-weight: map-get(var.$font-weights, bold);
+            }
         }
         
         &__current {
@@ -79,5 +79,17 @@
     .card {
         width: 120px;
         aspect-ratio: 1 / 1;
+
+        @include mx.respond(md, lg) {
+            width: 110px;
+        }
+
+        @include mx.respond(sm, md) {
+            width: 85px;
+        }
+
+        @include mx.respond(xs, sm) {
+            width: 65px;
+        }
     }
 }
