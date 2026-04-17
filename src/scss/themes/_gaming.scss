@@ -240,16 +240,27 @@
 
     .gameover {
         &__title {
+            color: map-get(var.$gaming, pink);
             font-family: var.$font-gaming;
             font-size: fct.px-to-rem(128);
             letter-spacing: 7%;
             text-transform: uppercase;
-            color: map-get(var.$gaming, pink);
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(108);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(88);
+            }
+
+            @include mx.respond(zero, sm) {
+                font-size: fct.px-to-rem(68);
+            }
         }
 
         &__subtitle {
             font-family: var.$font-gaming;
-            font-size: fct.px-to-rem(28);
             letter-spacing: 7%;
         }
 
@@ -258,10 +269,37 @@
             border-radius: 10px;
             padding: 8px 16px;
 
+            @include mx.respond(md, lg) {
+                border-radius: 8px;
+                padding: 6px 12px;
+            }
+
+            @include mx.respond(sm, md) {
+                border-radius: 6px;
+                padding: 4px 8px;
+            }
+
+            @include mx.respond(zero, sm) {
+                border-radius: 4px;
+                padding: 3px 6px;
+            }
+
              & span {
                 font-family: var.$font-gaming;
                 font-size: fct.px-to-rem(40);
                 letter-spacing: 0;
+
+                @include mx.respond(md, lg) {
+                    font-size: fct.px-to-rem(32);
+                }
+
+                @include mx.respond(sm, md) {
+                    font-size: fct.px-to-rem(26);
+                }
+
+                @include mx.respond(zero, sm) {
+                    font-size: fct.px-to-rem(20);
+                }
             }
         }
     }
@@ -276,20 +314,53 @@
             font-size: fct.px-to-rem(28);
             letter-spacing: 7%;
             font-weight: bold;
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(24);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(20);
+            }
+
+            @include mx.respond(zero, sm) {
+                font-size: fct.px-to-rem(16);
+            }
         }
 
         &__name {
             font-family: var.$font-gaming;
             font-size: fct.px-to-rem(64);
             letter-spacing: 7%;
-            text-transform: unset;
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(54);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(44);
+            }
+
+            @include mx.respond(zero, sm) {
+                font-size: fct.px-to-rem(34);
+            }
         }
 
          &__icon {
             width: 288px;
-            height: 344px;
+            aspect-ratio: 1 / 1.2;
+
+            @include mx.respond(md, lg) {
+                width: 250px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 220px;
+            }
+
+            @include mx.respond(zero, sm) {
+                width: 180px;
+            }
         }
     }
-    
-    
 }

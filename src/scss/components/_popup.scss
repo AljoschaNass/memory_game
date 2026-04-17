@@ -72,13 +72,3 @@
         gap: map-get(var.$spacing, md);
     }
 }
-
-.theme-gaming {
-    .popup__box {
-        background-color: map-get(var.$gaming, popup-bg);
-    }
-
-    .popup__text {
-        color: map-get(var.$gaming, popup-font);
-    }
-}

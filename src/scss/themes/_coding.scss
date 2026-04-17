@@ -142,4 +142,95 @@
             width: 65px;
         }
     }
+
+    .gameover {
+        &__title {
+            font-size: map-get(var.$font-sizes, xxl);
+            color: var(--color-accent);
+            letter-spacing: 4px;
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(54);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(44);
+            }
+
+            @include mx.respond(zero, sm) {
+                font-size: fct.px-to-rem(34);
+            }
+        }
+
+        &__scores {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: map-get(var.$spacing, sm) map-get(var.$spacing, xl);
+
+            @include mx.respond(md, lg) {
+                padding: map-get(var.$spacing, sm) map-get(var.$spacing, lg);
+            }
+
+            @include mx.respond(sm, md) {
+                padding: map-get(var.$spacing, xs) map-get(var.$spacing, md);
+            }
+
+            @include mx.respond(zero, sm) {
+                padding: map-get(var.$spacing, xs) map-get(var.$spacing, m);
+            }
+        }
+    }
+
+    .winner {
+        &__subtitle {
+            font-family: var.$font-display;
+            font-size: fct.px-to-rem(40);
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(32);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(26);
+            }
+
+            @include mx.respond(zero, sm) {
+                font-size: fct.px-to-rem(20);
+            }
+        }
+
+        &__name {
+            font-family: var.$font-display;
+            font-size: fct.px-to-rem(60);
+            text-transform: uppercase;
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(50);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(40);
+            }
+
+            @include mx.respond(zero, sm) {
+                font-size: fct.px-to-rem(30);
+            }
+        }
+
+         &__icon {
+            width: 200px;
+            aspect-ratio: 1 / 1.25;
+
+            @include mx.respond(md, lg) {
+                width: 175px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 150px;
+            }
+
+            @include mx.respond(zero, sm) {
+                width: 125px;
+            }
+        }
+    }
 }

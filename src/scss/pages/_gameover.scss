@@ -12,24 +12,57 @@
     min-height: 100vh;
     gap: map-get(var.$spacing, xl);
 
+    @include mx.respond(md, lg) {
+        gap: map-get(var.$spacing, lg);
+    }
+
+    @include mx.respond(sm, md) {
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond(xs, sm) {
+        gap: map-get(var.$spacing, m);
+    }
+
+    @include mx.respond(zero, xs) {
+        gap: map-get(var.$spacing, sm);
+    }
+
     &__title {
-        font-size: map-get(var.$font-sizes, xxl);
         font-weight: map-get(var.$font-weights, bold);
-        color: var(--color-accent);
-        text-transform: uppercase;
-        letter-spacing: 4px;
     }
 
     &__subtitle {
-        font-size: map-get(var.$font-sizes, md);
         color: var.$color-white;
+        font-size: fct.px-to-rem(28);
+
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(24);
+        }
+
+        @include mx.respond(sm, md) {
+            font-size: fct.px-to-rem(20);
+        }
+
+        @include mx.respond(zero, sm) {
+            font-size: fct.px-to-rem(16);
+        }
     }
 
     &__scores {
         @include mx.flex-center(row);
         gap: map-get(var.$spacing, md);
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: map-get(var.$spacing, sm) map-get(var.$spacing, xl);
-        border-radius: map-get(var.$radius, full);
+
+        @include mx.respond(md, lg) {
+            gap: map-get(var.$spacing, m);
+        }
+
+        @include mx.respond(sm, md) {
+            gap: map-get(var.$spacing, sm);
+        }
+
+        @include mx.respond(zero, sm) {
+            gap: map-get(var.$spacing, xs);
+        }
     }
 }
