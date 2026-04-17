@@ -52,8 +52,6 @@
     }
 
     .game-header {
-        height: 62px;
-        margin-top: 41px;
         background-color: map-get(var.$coding, header-bg);
 
         &__scores {
@@ -62,7 +60,22 @@
             span {
                 font-family: var.$font-display;
                 font-size: fct.px-to-rem(24);
-                font-weight: map-get(var.$font-weights, bold);
+
+                @include mx.respond(md, lg) {
+                    font-size: fct.px-to-rem(20);
+                }
+
+                @include mx.respond(sm, md) {
+                    font-size: fct.px-to-rem(16);
+                }
+
+                @include mx.respond(xs, sm) {
+                    font-size: fct.px-to-rem(12);
+                }
+
+                @include mx.respond(zero, xs) {
+                    font-size: fct.px-to-rem(8);
+                }
             }
         }
         
@@ -72,7 +85,44 @@
                 font-size: fct.px-to-rem(26);
                 font-weight: map-get(var.$font-weights, regular);
                 letter-spacing: 7%;
+
+                @include mx.respond(md, lg) {
+                    font-size: fct.px-to-rem(22);
+                }
+
+                @include mx.respond(sm, md) {
+                    font-size: fct.px-to-rem(18);
+                }
+
+                @include mx.respond(xs, sm) {
+                    font-size: fct.px-to-rem(14);
+                }
+
+                @include mx.respond(zero, xs) {
+                    font-size: fct.px-to-rem(10);
+                }
             }
+        }
+    }
+
+    .score img, .current-player-wrapper img {
+        width: 20px;
+        aspect-ratio: 1 / 1;
+
+        @include mx.respond(md, lg) {
+            width: 18px;
+        }
+
+        @include mx.respond(sm, md) {
+            width: 16px;
+        }
+
+        @include mx.respond(xs, sm) {
+            width: 14px;
+        }
+
+        @include mx.respond(zero, xs) {
+            width: 12px;
         }
     }
 

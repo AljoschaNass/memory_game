@@ -8,14 +8,24 @@
     padding: map-get(var.$spacing, sm) map-get(var.$spacing, lg);
     width: 100%;
 
+    @include mx.respond(md, lg) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, md);
+    }
+
     &__scores {
         @include mx.flex-center(row);
         gap: map-get(var.$spacing, sm);
 
-        & span {
-            font-family: var.$font-display;
-            font-size: fct.px-to-rem(24);
-            font-weight: 700;
+        @include mx.respond(md, lg) {
+            gap: map-get(var.$spacing, xs);
+        }
+
+        @include mx.respond(zero, md) {
+            gap: 0;
+        }
+
+        span {
+            font-weight: map-get(var.$font-weights, bold);
         }
     }
 
@@ -28,22 +38,23 @@
 
 .current-player-wrapper {
     @include mx.flex-center();
-    width: 40px;
-    height: 40px
 }
 
 .score {
     @include mx.flex-center(row);
-    gap: map-get(var.$spacing, xs);
     padding: map-get(var.$spacing, xs) map-get(var.$spacing, md);
-    border-radius: map-get(var.$radius, full);
-    font-family: var.$font-display;
-    font-size: fct.px-to-rem(26);
-    font-weight: 700;
+    gap: map-get(var.$spacing, sm);
 
-    img {
-        width: 20px;
-        height: 20px;
+    @include mx.respond(md, lg) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, m);    }
+
+    @include mx.respond(sm, md) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
+        gap: map-get(var.$spacing, xs);
+    }
+   
+    @include mx.respond(zero, sm) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, xs);
     }
 
     &--blue {
