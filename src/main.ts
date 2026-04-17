@@ -36,9 +36,9 @@ interface GameState {
 // CONSTANTS
 // ============================================================
 
-const ICON_PATH = '/projects/memory_game/src/assets/icons/';
-const CARD_PATH = '/projects/memory_game/src/assets/cards/';
-const PREVIEW_PATH = '/projects/memory_game/src/assets/previews/';
+const ICON_PATH = '/projects/memory_game/assets/icons/';
+const CARD_PATH = '/projects/memory_game/assets/cards/';
+const PREVIEW_PATH = '/projects/memory_game/assets/previews/';
 
 const PLAYER_COLORS: Record<Player, string> = {
     blue: '#2BB1FF',
