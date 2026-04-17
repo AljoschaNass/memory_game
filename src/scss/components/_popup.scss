@@ -15,11 +15,32 @@
     }
 
     &__box {
+        @include mx.flex-center(column);
         background-color: var.$color-white;
         padding: map-get(var.$spacing, xxl);
-        @include mx.flex-center(column);
         gap: map-get(var.$spacing, xxxl);
-        width: 540px;
+        max-width: 540px;
+        width: 70vw;
+
+        @include mx.respond(md, lg) {
+            padding: map-get(var.$spacing, xl);
+            gap: map-get(var.$spacing, xxl);
+        }
+
+        @include mx.respond(sm, md) {
+            padding: map-get(var.$spacing, lg);
+            gap: map-get(var.$spacing, xl);
+        }
+
+        @include mx.respond(xs, sm) {
+            padding: map-get(var.$spacing, md);
+            gap: map-get(var.$spacing, lg);
+        }
+
+        @include mx.respond(zero, xs) {
+            padding: map-get(var.$spacing, m);
+            gap: map-get(var.$spacing, md);
+        }
     }
 
     &__text {
@@ -28,6 +49,22 @@
         font-weight: map-get(var.$font-weights, bold);
         color: var.$color-black;
         text-align: center;
+
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(26);
+        }
+
+        @include mx.respond(sm, md) {
+            font-size: fct.px-to-rem(24);
+        }
+
+        @include mx.respond(xs, sm) {
+            font-size: fct.px-to-rem(20);
+        }
+
+        @include mx.respond(zero, xs) {
+            font-size: fct.px-to-rem(16);
+        }
     }
 
     &__actions {
