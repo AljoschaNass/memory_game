@@ -22,18 +22,19 @@
     padding: 80px 120px;
     height: 100%;
 
-    // Tablet
     @include mx.respond(md, lg) {
         padding: 60px 80px;
         gap: map-get(var.$spacing, lg);
     }
 
-    // Mobil – einspaltiges Layout
-    @include mx.respond(zero, md) {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto;
-        padding: map-get(var.$spacing, lg);
-        gap: map-get(var.$spacing, lg);
+    @include mx.respond(xs, md) {
+        padding: 60px 90px;
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond(zero, xs) {
+        padding: 40px 60px;
+        gap: map-get(var.$spacing, xs);
     }
 
     &__title {
@@ -134,6 +135,7 @@
 
     &__preview {
         @include mx.flex-center();
+        justify-content: flex-end;
         overflow: hidden;
 
         img {
@@ -178,8 +180,8 @@
         }
 
         @include mx.respond(zero, md) {
-            white-space: normal;
-            flex-wrap: wrap;
+            // white-space: normal;
+            // flex-wrap: wrap;
             gap: map-get(var.$spacing, xs);
             padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
         }
