@@ -234,8 +234,15 @@
 
     .card {
         width: 105px;
-        height: 120px;
-        aspect-ratio: unset;
+        aspect-ratio: 0.875 / 1;
+
+        @include mx.respond(sm, md) {
+            width: 85px;
+        }
+
+        @include mx.respond(xs, sm) {
+            width: 65px;
+        }
     }
 
     .gameover {

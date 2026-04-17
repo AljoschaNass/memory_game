@@ -8,10 +8,6 @@
     cursor: pointer;
     perspective: 1000px;
 
-    @include mx.respond(md) {
-        width: 100px;
-    }
-
     &__inner {
         position: relative;
         width: 100%;

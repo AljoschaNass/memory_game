@@ -14,6 +14,21 @@
     min-height: 100vh;
     padding: 54px 41px;
     gap: map-get(var.$spacing, xl);
+
+    @include mx.respond(md, lg) {
+        padding: 44px 32px;
+        gap: map-get(var.$spacing, lg);
+    }
+
+    @include mx.respond(sm, md) {
+        padding: 36px 24px;
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond(zero, sm) {
+        padding: 28px 18px;
+        gap: map-get(var.$spacing, sm);
+    }
 }
 
 .board {
@@ -21,17 +36,18 @@
     gap: map-get(var.$spacing, sm);
     justify-content: center;
 
-    // 16 Karten = 4x4
+    @include mx.respond(zero, xs) {
+        gap: map-get(var.$spacing, xs);
+    }
+
     &--16 {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    // 24 Karten = 6x4
     &--24 {
         grid-template-columns: repeat(6, 1fr);
     }
 
-    // 36 Karten = 6x6
     &--36 {
         grid-template-columns: repeat(6, 1fr);
     }
