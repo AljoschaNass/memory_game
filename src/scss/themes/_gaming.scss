@@ -10,14 +10,29 @@
         box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
         border-radius: 10px;
 
-        img {
-            width: 26px;
-            height: auto;
+        @include mx.respond(zero, md) {
+            border-radius: 6px;
         }
 
         span {
-        font-size: fct.px-to-rem(20);
-        font-family: var.$font-gaming;
+            font-size: fct.px-to-rem(20);
+            font-family: var.$font-gaming;
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(18);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(16);
+            }
+
+            @include mx.respond(xs, sm) {
+                font-size: fct.px-to-rem(14);
+            }
+
+            @include mx.respond(zero, xs) {
+                font-size: fct.px-to-rem(12);
+            }
         }
 
         .btn__icon--default { display: block; }
@@ -38,6 +53,10 @@
         background-color: map-get(var.$gaming, pink);
         border-radius: 10px;
 
+        @include mx.respond(zero, md) {
+            border-radius: 6px;
+        }
+
         &:hover {
             background-color: rgba(map-get(var.$gaming, pink), 0.7);
             box-shadow: inset 0 0 0 3px map-get(var.$gaming, pink-border);
@@ -49,6 +68,10 @@
         box-shadow: inset 0 0 0 2px map-get(var.$gaming, pink-border);
         color: map-get(var.$gaming, pink);
         border-radius: 10px;
+
+        @include mx.respond(zero, md) {
+            border-radius: 6px;
+        }
     }
 
     .btn--back {
@@ -57,6 +80,10 @@
         font-family: var.$font-gaming;
         font-size: fct.px-to-rem(20);
         border-radius: 10px;
+
+        @include mx.respond(zero, md) {
+            border-radius: 6px;
+        }
 
         &:hover {
             background-color: rgba(map-get(var.$gaming, pink), 0.14);

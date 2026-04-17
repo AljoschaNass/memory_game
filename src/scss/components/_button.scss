@@ -164,22 +164,86 @@
 
         img {
             width: 20px;
-            height: 16px;
+            aspect-ratio: 1.25 / 1;
             transition: transform 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+
+            @include mx.respond(md, lg) {
+                width: 18px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 16px;
+            }
+
+            @include mx.respond(xs, sm) {
+                width: 14px;
+            }
+
+            @include mx.respond(zero, xs) {
+                width: 12px;
+            }
         }
 
         span {
             font-size: fct.px-to-rem(20);
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(18);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(16);
+            }
+
+            @include mx.respond(xs, sm) {
+                font-size: fct.px-to-rem(14);
+            }
+
+            @include mx.respond(zero, xs) {
+                font-size: fct.px-to-rem(12);
+            }
         }
 
         &:hover img {
             width: 25px;
-            height: 20px;
+            aspect-ratio: 1.25 / 1;
             transform: rotate(-5deg);
+
+            @include mx.respond(md, lg) {
+                width: 23px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 21px;
+            }
+
+            @include mx.respond(xs, sm) {
+                width: 19px;
+            }
+
+            @include mx.respond(zero, xs) {
+                width: 17px;
+            }
         }
 
         &:hover span {
             font-size: fct.px-to-rem(22);
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(20);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(18);
+            }
+
+            @include mx.respond(xs, sm) {
+                font-size: fct.px-to-rem(16);
+            }
+
+            @include mx.respond(zero, xs) {
+                font-size: fct.px-to-rem(14);
+            }
         }
     }
 
@@ -189,9 +253,40 @@
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
         border: none;
 
+        @include mx.respond(md, lg) {
+            padding: fct.px-to-rem(16) fct.px-to-rem(24);
+        }
+
+        @include mx.respond(sm, md) {
+            padding: fct.px-to-rem(8) fct.px-to-rem(12);
+        }
+
+        @include mx.respond(xs, sm) {
+            padding: fct.px-to-rem(6) fct.px-to-rem(9);
+        }
+
+        @include mx.respond(zero, xs) {
+            padding: fct.px-to-rem(6) fct.px-to-rem(9);
+        }
+
         img {
-            width: 18px;
-            height: 18px;
+            width: 26px;
+
+            @include mx.respond(md, lg) {
+                width: 22px;
+            }
+
+            @include mx.respond(sm, md) {
+                width: 20px;
+            }
+
+            @include mx.respond(xs, sm) {
+                width: 18px;
+            }
+
+            @include mx.respond(zero, xs) {
+                width: 16px;
+            }
         }
 
         &:hover {
@@ -199,34 +294,32 @@
         }
     }
 
-    &--no {
-        color: var.$color-white;
-        font-size: fct.px-to-rem(20);
-        font-weight: map-get(var.$font-weights, bold);
-        border: none;
-        padding: fct.px-to-rem(16) fct.px-to-rem(24);
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    &--yes {
-        font-size: fct.px-to-rem(20);
-        font-weight: map-get(var.$font-weights, bold);
-        border: none;
-        padding: fct.px-to-rem(16) fct.px-to-rem(24);
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    &--back {
+    &--no, &--yes, &--back {
         color: var.$color-white;
         font-weight: map-get(var.$font-weights, bold);
+        font-size: fct.px-to-rem(20);
         border: none;
         padding: fct.px-to-rem(16) fct.px-to-rem(24);
+
+        @include mx.respond(md, lg) {
+            font-size: fct.px-to-rem(18);
+            padding: fct.px-to-rem(14) fct.px-to-rem(21);
+        }
+
+        @include mx.respond(sm, md) {
+            font-size: fct.px-to-rem(16);
+            padding: fct.px-to-rem(12) fct.px-to-rem(18);
+        }
+
+        @include mx.respond(xs, sm) {
+            font-size: fct.px-to-rem(14);
+            padding: fct.px-to-rem(8) fct.px-to-rem(12);
+        }
+
+        @include mx.respond(zero, xs) {
+            font-size: fct.px-to-rem(12);
+            padding: fct.px-to-rem(6) fct.px-to-rem(9);
+        }
 
         &:hover {
             opacity: 1;

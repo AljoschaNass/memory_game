@@ -12,6 +12,26 @@
         .btn__icon--hover { display: none; }
         .btn__icon--default { display: block; }
 
+        span {
+            font-size: fct.px-to-rem(24);
+
+            @include mx.respond(md, lg) {
+                font-size: fct.px-to-rem(22);
+            }
+
+            @include mx.respond(sm, md) {
+                font-size: fct.px-to-rem(20);
+            }
+
+            @include mx.respond(xs, sm) {
+                font-size: fct.px-to-rem(18);
+            }
+
+            @include mx.respond(zero, xs) {
+                font-size: fct.px-to-rem(16);
+            }
+        }
+        
         &:hover {
             background-color: rgba(map-get(var.$coding, teal-light), 0.26);
             box-shadow: 

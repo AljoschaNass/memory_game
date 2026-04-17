@@ -21,12 +21,12 @@
     }
 
     @include mx.respond(sm, md) {
-        padding: 36px 24px;
+        padding: 30px 16px;
         gap: map-get(var.$spacing, md);
     }
 
     @include mx.respond(zero, sm) {
-        padding: 28px 18px;
+        padding: 22px 12px;
         gap: map-get(var.$spacing, sm);
     }
 }

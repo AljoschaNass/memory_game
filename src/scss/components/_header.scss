@@ -9,7 +9,15 @@
     width: 100%;
 
     @include mx.respond(md, lg) {
-        padding: map-get(var.$spacing, xs) map-get(var.$spacing, md);
+        padding: map-get(var.$spacing, sm) map-get(var.$spacing, md);
+    }
+
+    @include mx.respond(xs, md) {
+        padding: map-get(var.$spacing, sm) map-get(var.$spacing, m);
+    }
+
+    @include mx.respond(zero, xs) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
     }
 
     &__scores {
