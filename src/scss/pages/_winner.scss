@@ -7,6 +7,10 @@
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+
+    &.is-active {
+        @include mx.fade-in(0.3s);
+    }
 }
 
 .winner {

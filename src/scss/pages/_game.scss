@@ -5,6 +5,14 @@
 .view--game {
     background-color: var(--color-bg);
     min-height: 100vh;
+
+    &.is-active {
+        @include mx.fade-in(0.3s);
+    }
+
+    @include mx.respond(xl, xxl) {
+        max-width: 1440px;
+    }
 }
 
 .game {

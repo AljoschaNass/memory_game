@@ -8,7 +8,10 @@
     min-height: 100vh;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    
+    &.is-active {
+        @include mx.fade-in(0.3s);
+    }
 
     @include mx.respond(xl, xxl) {
         max-width: 1440px;
