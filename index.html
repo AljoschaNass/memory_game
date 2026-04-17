@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/src/assets/icons/stadia_controller_black.svg" />
+    <link rel="icon" type="image/svg+xml" href="/public/assets/icons/stadia_controller_black.svg" />
     <title>Memory Game</title>
 </head>
 <body>
@@ -15,14 +15,14 @@
                 <p class="home__subtitle">It's play time.</p>
                 <h1 class="home__title">Ready to play?</h1>
                 <button class="btn btn--play" id="btn-go-to-settings">
-                    <img src="/src/assets/icons/stadia_controller_black.svg" alt="gamepad" />
+                    <img src="/public/assets/icons/stadia_controller_black.svg" alt="gamepad" />
                     <span>Play</span>
                     <span class="btn__arrow">→</span>
                 </button>
             </div>
             <img 
                 class="home__deco" 
-                src="/src/assets/icons/stadia_controller_yellow.svg" 
+                src="/public/assets/icons/stadia_controller_yellow.svg" 
                 alt="" 
                 aria-hidden="true" 
             />
@@ -38,7 +38,7 @@
                 <!-- Game themes -->
                 <div class="settings__group">
                     <h3 class="settings__group-title">
-                        <img src="/src/assets/icons/palette.svg" alt="" />
+                        <img src="/public/assets/icons/palette.svg" alt="" />
                         Game themes
                     </h3>
                     <label class="radio">
@@ -54,7 +54,7 @@
                 <!-- Choose player -->
                 <div class="settings__group">
                     <h3 class="settings__group-title">
-                        <img src="/src/assets/icons/chess_pawn_petrol.svg" alt="chess pawn" />
+                        <img src="/public/assets/icons/chess_pawn_petrol.svg" alt="chess pawn" />
                         Choose player
                     </h3>
                     <label class="radio">
@@ -70,7 +70,7 @@
                 <!-- Board size -->
                 <div class="settings__group">
                     <h3 class="settings__group-title">
-                        <img src="/src/assets/icons/style.svg" alt="" />
+                        <img src="/public/assets/icons/style.svg" alt="" />
                         Board size
                     </h3>
                     <label class="radio">
@@ -91,7 +91,7 @@
             <div class="settings__right">
                 <!-- Preview -->
                 <div class="settings__preview" id="settings-preview">
-                    <img src="/src/assets/previews/coding-preview.svg" alt="theme preview" id="preview-img" />
+                    <img src="/public/assets/previews/coding-preview.svg" alt="theme preview" id="preview-img" />
                 </div>
 
                 <!-- Bar -->
@@ -102,7 +102,7 @@
                     <span class="settings__bar-divider">/</span>
                     <span class="settings__bar-item" id="bar-size">Board-16 Cards</span>
                     <button class="btn btn--start" id="btn-start">
-                        <img src="/src/assets/icons/smart_display.svg" alt="play button" />
+                        <img src="/public/assets/icons/smart_display.svg" alt="play button" />
                         <span>Start</span>
                     </button>
                 </div>
@@ -118,12 +118,12 @@
             <header class="game-header">
                 <div class="game-header__scores">
                     <div class="score score--blue" id="score-blue">
-                        <img src="/src/assets/icons/player-blue.svg" alt="blue player" />
+                        <img src="/public/assets/icons/player-blue.svg" alt="blue player" />
                         <span id="score-blue-label">Blue</span>
                         <span id="score-blue-value">0</span>
                     </div>
                     <div class="score score--orange" id="score-orange">
-                        <img src="/src/assets/icons/player-orange.svg" alt="orange player" />
+                        <img src="/public/assets/icons/player-orange.svg" alt="orange player" />
                         <span id="score-orange-label">Orange</span>
                         <span id="score-orange-value">0</span>
                     </div>
@@ -131,12 +131,12 @@
                 <div class="game-header__current">
                     <span>Current player:</span>
                     <div id="current-player-wrapper" class="current-player-wrapper">
-                        <img class="current-player-icon" id="current-player-icon" src="/icons/player.svg" alt="current player" />
+                        <img class="current-player-icon" id="current-player-icon" src="/public/assets/icons/player-blue.svg" alt="current player" />
                     </div>
                 </div>
                 <button class="btn btn--exit" id="btn-exit">
-                    <img class="btn__icon--default" src="/src/assets/icons/exit-white.svg" alt="exit" />
-                    <img class="btn__icon--hover" src="/src/assets/icons/exit-red.svg" alt="exit" />
+                    <img class="btn__icon--default" src="/public/assets/icons/exit-white.svg" alt="exit" />
+                    <img class="btn__icon--hover" src="/public/assets/icons/exit-red.svg" alt="exit" />
                     <span>Exit game</span>
                 </button>
             </header>
@@ -156,11 +156,11 @@
             <p class="gameover__subtitle">Final score</p>
             <div class="gameover__scores">
                 <div class="score score--blue">
-                    <img src="/src/assets/icons/player-blue.svg" alt="blue player" />
+                    <img src="/public/assets/icons/player-blue.svg" alt="blue player" />
                     <span id="final-score-blue">0</span>
                 </div>
                 <div class="score score--orange">
-                    <img src="/src/assets/icons/player-orange.svg" alt="orange player" />
+                    <img src="/public/assets/icons/player-orange.svg" alt="orange player" />
                     <span id="final-score-orange">0</span>
                 </div>
             </div>
@@ -169,11 +169,11 @@
 
     <!-- ==================== WINNER ==================== -->
     <section class="view view--winner" id="view-winner">
-        <img class="winner__confetti" src="/src/assets/icons/confetti.svg" alt="" aria-hidden="true" />
+        <img class="winner__confetti" src="/public/assets/icons/confetti.svg" alt="" aria-hidden="true" />
         <div class="winner">
             <p class="winner__subtitle">The winner is</p>
             <h2 class="winner__name" id="winner-name">Blue Player</h2>
-            <img class="winner__icon" id="winner-icon" src="/icons/player.svg" alt="winner" />
+            <img class="winner__icon" id="winner-icon" src="/public/assets/icons/player-blue.svg" alt="winner" />
             <button class="btn btn--back" id="btn-back-to-start">
                 Back to start
             </button>
