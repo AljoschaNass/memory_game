@@ -1,76 +1,13 @@
 import './scss/main.scss';
-
-// ============================================================
-// TYPES
-// ============================================================
-
-type Theme = 'coding' | 'gaming';
-type Player = 'blue' | 'orange';
-type BoardSize = 16 | 24 | 36;
-type Winner = 'blue' | 'orange' | 'draw';
-
-interface GameSettings {
-  theme: Theme | null;
-  player: Player | null;
-  size: BoardSize | null;
-}
-
-interface CardData {
-  id: number;
-  name: string;
-  imagePath: string;
-  isFlipped: boolean;
-  isMatched: boolean;
-}
-
-interface GameState {
-  settings: GameSettings;
-  cards: CardData[];
-  flippedCards: CardData[];
-  scores: { blue: number; orange: number };
-  currentPlayer: Player;
-  isLocked: boolean;
-}
-
-// ============================================================
-// CONSTANTS
-// ============================================================
-
-const ICON_PATH = '/projects/memory_game/assets/icons/';
-const CARD_PATH = '/projects/memory_game/assets/cards/';
-const PREVIEW_PATH = '/projects/memory_game/assets/previews/';
-
-const FLIP_DELAY_MS = 1000;
-const GAMEOVER_DELAY_MS = 500;
-const WINNER_DELAY_MS = 2000;
-
-const PLAYER_COLORS: Record<Player, string> = {
-  blue: '#2BB1FF',
-  orange: '#F58E39'
-};
-
-const THEME_LABELS: Record<Theme, string> = {
-  coding: 'Code Theme',
-  gaming: 'Game Theme'
-};
-
-const CODING_CARDS: string[] = [
-  'coding-angular', 'coding-bootstrap', 'coding-css',
-  'coding-database', 'coding-django', 'coding-firebase',
-  'coding-git', 'coding-github', 'coding-html',
-  'coding-javascript', 'coding-nodejs', 'coding-python',
-  'coding-react', 'coding-sass', 'coding-terminal',
-  'coding-typescript', 'coding-vscode', 'coding-vue'
-];
-
-const GAMING_CARDS: string[] = [
-  'gaming-banana', 'gaming-card', 'gaming-coin',
-  'gaming-controller', 'gaming-dices', 'gaming-gameboy',
-  'gaming-labyrint', 'gaming-levelup', 'gaming-minecraft',
-  'gaming-mushroom', 'gaming-pacman', 'gaming-pacmanattack',
-  'gaming-playbutton', 'gaming-puzzle', 'gaming-snake',
-  'gaming-squidround', 'gaming-squidsquare', 'gaming-squidtri'
-];
+import {
+  Theme, Player, BoardSize, GameState,
+  ICON_PATH, PREVIEW_PATH, PLAYER_COLORS, THEME_LABELS,
+  FLIP_DELAY_MS, GAMEOVER_DELAY_MS, WINNER_DELAY_MS
+} from './types';
+import {
+  createCards, appendCard, markCardsMatched, unflipCards,
+  getWinner, getWinnerIcon, capitalize
+} from './game';
 
 // ============================================================
 // STATE
@@ -90,26 +27,26 @@ const state: GameState = {
 // ============================================================
 
 const views = {
-  home: document.getElementById('view-home')!,
+  home:     document.getElementById('view-home')!,
   settings: document.getElementById('view-settings')!,
-  game: document.getElementById('view-game')!,
+  game:     document.getElementById('view-game')!,
   gameover: document.getElementById('view-gameover')!,
-  winner: document.getElementById('view-winner')!,
+  winner:   document.getElementById('view-winner')!,
 };
 
-const popup = document.getElementById('popup')!;
-const board = document.getElementById('board')!;
-const btnStart = document.getElementById('btn-start') as HTMLButtonElement;
-const barTheme = document.getElementById('bar-theme')!;
-const barPlayer = document.getElementById('bar-player')!;
-const barSize = document.getElementById('bar-size')!;
-const settingsPreview = document.getElementById('settings-preview')!;
-const scoreBlueEl = document.getElementById('score-blue-value')!;
-const scoreOrangeEl = document.getElementById('score-orange-value')!;
-const finalScoreBlue = document.getElementById('final-score-blue')!;
+const popup            = document.getElementById('popup')!;
+const board            = document.getElementById('board')!;
+const btnStart         = document.getElementById('btn-start') as HTMLButtonElement;
+const barTheme         = document.getElementById('bar-theme')!;
+const barPlayer        = document.getElementById('bar-player')!;
+const barSize          = document.getElementById('bar-size')!;
+const settingsPreview  = document.getElementById('settings-preview')!;
+const scoreBlueEl      = document.getElementById('score-blue-value')!;
+const scoreOrangeEl    = document.getElementById('score-orange-value')!;
+const finalScoreBlue   = document.getElementById('final-score-blue')!;
 const finalScoreOrange = document.getElementById('final-score-orange')!;
-const winnerName = document.getElementById('winner-name')!;
-const winnerIcon = document.getElementById('winner-icon') as HTMLImageElement;
+const winnerNameEl     = document.getElementById('winner-name')!;
+const winnerIconEl     = document.getElementById('winner-icon') as HTMLImageElement;
 
 // ============================================================
 // VIEW NAVIGATION
@@ -151,9 +88,9 @@ function checkSettingsComplete(): void {
 /** Updates the settings bar text with the current selections. */
 function updateSettingsBar(): void {
   const { theme, player, size } = state.settings;
-  barTheme.textContent = theme  ? THEME_LABELS[theme] : 'Theme';
+  barTheme.textContent  = theme  ? THEME_LABELS[theme] : 'Theme';
   barPlayer.textContent = player ? `${capitalize(player)} Player` : 'Player';
-  barSize.textContent = size   ? `Board-${size} Cards` : 'Board size';
+  barSize.textContent   = size   ? `Board-${size} Cards` : 'Board size';
 }
 
 /** Sets up change listeners for all settings radio buttons. */
@@ -185,32 +122,8 @@ function addRadioListener(name: string, callback: (val: string) => void): void {
 }
 
 // ============================================================
-// CARDS
+// BOARD
 // ============================================================
-
-/** Returns the card list for the given theme. */
-function getCardList(theme: Theme): string[] {
-  return theme === 'coding' ? CODING_CARDS : GAMING_CARDS;
-}
-
-/** Returns a shuffled copy of the given array. */
-function shuffle<T>(arr: T[]): T[] {
-  return [...arr].sort(() => Math.random() - 0.5);
-}
-
-/** Creates an array of card pairs based on theme and board size. */
-function createCards(theme: Theme, size: BoardSize): CardData[] {
-  const selected = shuffle(getCardList(theme)).slice(0, size / 2);
-  const paired = shuffle([...selected, ...selected]);
-
-  return paired.map((name, index) => ({
-    id: index,
-    name,
-    imagePath: `${CARD_PATH}${name}.svg`,
-    isFlipped: false,
-    isMatched: false
-  }));
-}
 
 /** Clears the board and renders all cards. */
 function renderBoard(): void {
@@ -219,25 +132,7 @@ function renderBoard(): void {
 
   board.className = `board board--${size}`;
   board.innerHTML = '';
-  state.cards.forEach(card => appendCard(card, theme));
-}
-
-/** Creates a card button element and appends it to the board. */
-function appendCard(card: CardData, theme: Theme): void {
-  const btn = document.createElement('button');
-  btn.classList.add('card');
-  btn.dataset.id = String(card.id);
-  btn.innerHTML = `
-    <div class="card__inner">
-      <div class="card__face card__face--front">
-        <img src="${CARD_PATH}${theme}-cover.svg" alt="card cover" />
-      </div>
-      <div class="card__face card__face--back">
-        <img src="${card.imagePath}" alt="${card.name}" />
-      </div>
-    </div>
-  `;
-  board.appendChild(btn);
+  state.cards.forEach(card => appendCard(card, theme, board));
 }
 
 // ============================================================
@@ -246,7 +141,7 @@ function appendCard(card: CardData, theme: Theme): void {
 
 /** Updates both score values in the header. */
 function updateScoreDisplay(): void {
-  scoreBlueEl.textContent = String(state.scores.blue);
+  scoreBlueEl.textContent   = String(state.scores.blue);
   scoreOrangeEl.textContent = String(state.scores.orange);
 }
 
@@ -261,7 +156,7 @@ function updateCurrentPlayerDisplay(): void {
 
 /** Sets the current player icon to a white pawn with colored background. */
 function updateGamingPlayerDisplay(): void {
-  const icon = document.getElementById('current-player-icon') as HTMLImageElement;
+  const icon    = document.getElementById('current-player-icon') as HTMLImageElement;
   const wrapper = document.getElementById('current-player-wrapper');
   icon.src = `${ICON_PATH}chess_pawn_white.svg`;
   if (wrapper) {
@@ -271,7 +166,7 @@ function updateGamingPlayerDisplay(): void {
 
 /** Sets the current player icon to a colored pawn without background. */
 function updateCodingPlayerDisplay(): void {
-  const icon = document.getElementById('current-player-icon') as HTMLImageElement;
+  const icon    = document.getElementById('current-player-icon') as HTMLImageElement;
   const wrapper = document.getElementById('current-player-wrapper');
   icon.src = `${ICON_PATH}player-${state.currentPlayer}.svg`;
   if (wrapper) {
@@ -282,18 +177,18 @@ function updateCodingPlayerDisplay(): void {
 
 /** Shows or hides the score labels (Blue, Orange) in the header. */
 function setScoreLabelsVisible(visible: boolean): void {
-  const blueLabel = document.getElementById('score-blue-label');
+  const blueLabel   = document.getElementById('score-blue-label');
   const orangeLabel = document.getElementById('score-orange-label');
-  if (blueLabel) blueLabel.style.display   = visible ? 'inline' : 'none';
+  if (blueLabel)   blueLabel.style.display   = visible ? 'inline' : 'none';
   if (orangeLabel) orangeLabel.style.display = visible ? 'inline' : 'none';
 }
 
 /** Sets the score icons based on the active theme. */
 function setScoreIcons(theme: Theme): void {
-  const blueIcon = document.querySelector('#score-blue img') as HTMLImageElement;
+  const blueIcon   = document.querySelector('#score-blue img') as HTMLImageElement;
   const orangeIcon = document.querySelector('#score-orange img') as HTMLImageElement;
   const prefix = theme === 'gaming' ? 'chess_pawn' : 'player-';
-  const sep = theme === 'gaming' ? '_' : '';
+  const sep    = theme === 'gaming' ? '_' : '';
   if (blueIcon)   blueIcon.src   = `${ICON_PATH}${prefix}${sep}blue.svg`;
   if (orangeIcon) orangeIcon.src = `${ICON_PATH}${prefix}${sep}orange.svg`;
 }
@@ -321,7 +216,7 @@ function handleCardClick(e: MouseEvent): void {
   const cardEl = (e.target as HTMLElement).closest('.card') as HTMLButtonElement;
   if (!cardEl) return;
 
-  const id = Number(cardEl.dataset.id);
+  const id   = Number(cardEl.dataset.id);
   const card = state.cards.find(c => c.id === id);
   if (!card || card.isFlipped || card.isMatched) return;
 
@@ -348,12 +243,12 @@ function checkForMatch(): void {
 }
 
 /** Handles a successful match between two cards. */
-function handleMatch(first: CardData, second: CardData): void {
+function handleMatch(first: typeof state.cards[0], second: typeof state.cards[0]): void {
   state.cards.forEach(c => {
     if (c.name === first.name) c.isMatched = true;
   });
 
-  markCardsMatched(first.id, second.id);
+  markCardsMatched(board, first.id, second.id);
   state.scores[state.currentPlayer]++;
   updateScoreDisplay();
   state.flippedCards = [];
@@ -361,32 +256,14 @@ function handleMatch(first: CardData, second: CardData): void {
   checkGameOver();
 }
 
-/** Adds the matched class to the given card elements. */
-function markCardsMatched(id1: number, id2: number): void {
-  board.querySelectorAll<HTMLButtonElement>(
-    `[data-id="${id1}"], [data-id="${id2}"]`
-  ).forEach(el => el.classList.add('is-matched'));
-}
-
 /** Handles a failed match by flipping both cards back after a delay. */
-function handleNoMatch(first: CardData, second: CardData): void {
+function handleNoMatch(first: typeof state.cards[0], second: typeof state.cards[0]): void {
   setTimeout(() => {
-    unflipCards(first.id, second.id);
+    unflipCards(board, state, first.id, second.id);
     state.flippedCards = [];
     state.isLocked = false;
     switchPlayer();
   }, FLIP_DELAY_MS);
-}
-
-/** Removes the flipped state from the given cards. */
-function unflipCards(id1: number, id2: number): void {
-  board.querySelectorAll<HTMLButtonElement>(
-    `[data-id="${id1}"], [data-id="${id2}"]`
-  ).forEach(el => el.classList.remove('is-flipped'));
-
-  state.cards.forEach(c => {
-    if (c.id === id1 || c.id === id2) c.isFlipped = false;
-  });
 }
 
 // ============================================================
@@ -398,41 +275,26 @@ function checkGameOver(): void {
   if (!state.cards.every(c => c.isMatched)) return;
 
   setTimeout(() => {
-    finalScoreBlue.textContent = String(state.scores.blue);
+    finalScoreBlue.textContent   = String(state.scores.blue);
     finalScoreOrange.textContent = String(state.scores.orange);
     showView('gameover');
-    setTimeout(() => showWinner(), WINNER_DELAY_MS);
+    setTimeout(() => showWinnerScreen(), WINNER_DELAY_MS);
   }, GAMEOVER_DELAY_MS);
 }
 
-/** Returns the winner based on current scores. */
-function getWinner(): Winner {
-  const { blue, orange } = state.scores;
-  if (blue === orange) return 'draw';
-  return blue > orange ? 'blue' : 'orange';
-}
-
-/** Returns the icon path for the winner based on the active theme. */
-function getWinnerIcon(winner: Winner): string {
-  if (state.settings.theme === 'gaming') return `${ICON_PATH}pokal.svg`;
-  return winner === 'draw'
-    ? `${ICON_PATH}chess_pawn_white.svg`
-    : `${ICON_PATH}chess_pawn_${winner}.svg`;
-}
-
 /** Shows the winner screen with the correct name and icon. */
-function showWinner(): void {
-  const winner = getWinner();
+function showWinnerScreen(): void {
+  const winner = getWinner(state);
 
   if (winner === 'draw') {
-    winnerName.textContent = "It's a draw!";
-    winnerName.className = 'winner__name';
+    winnerNameEl.textContent = "It's a draw!";
+    winnerNameEl.className   = 'winner__name';
   } else {
-    winnerName.textContent = `${capitalize(winner)} Player`;
-    winnerName.className = `winner__name winner__name--${winner}`;
+    winnerNameEl.textContent = `${capitalize(winner)} Player`;
+    winnerNameEl.className   = `winner__name winner__name--${winner}`;
   }
 
-  winnerIcon.src = getWinnerIcon(winner);
+  winnerIconEl.src = getWinnerIcon(state, winner);
   showView('winner');
 }
 
@@ -446,10 +308,10 @@ function startGame(): void {
   if (!theme || !player || !size) return;
 
   state.currentPlayer = player;
-  state.scores = { blue: 0, orange: 0 };
-  state.flippedCards = [];
-  state.isLocked = false;
-  state.cards = createCards(theme, size);
+  state.scores        = { blue: 0, orange: 0 };
+  state.flippedCards  = [];
+  state.isLocked      = false;
+  state.cards         = createCards(theme, size);
 
   updateScoreDisplay();
   updateCurrentPlayerDisplay();
@@ -461,8 +323,8 @@ function startGame(): void {
 /** Resets all state and settings back to defaults. */
 function resetToHome(): void {
   state.settings = { theme: 'coding', player: 'blue', size: 16 };
-  state.cards = [];
-  state.scores = { blue: 0, orange: 0 };
+  state.cards    = [];
+  state.scores   = { blue: 0, orange: 0 };
 
   resetRadioButtons();
   applyTheme('coding');
@@ -474,13 +336,13 @@ function resetToHome(): void {
 
 /** Resets all radio buttons to their first option. */
 function resetRadioButtons(): void {
-  const firstTheme = document.querySelector<HTMLInputElement>('input[name="theme"]');
+  const firstTheme  = document.querySelector<HTMLInputElement>('input[name="theme"]');
   const firstPlayer = document.querySelector<HTMLInputElement>('input[name="player"]');
-  const firstSize = document.querySelector<HTMLInputElement>('input[name="size"]');
+  const firstSize   = document.querySelector<HTMLInputElement>('input[name="size"]');
 
-  if (firstTheme) firstTheme.checked = true;
+  if (firstTheme)  firstTheme.checked  = true;
   if (firstPlayer) firstPlayer.checked = true;
-  if (firstSize) firstSize.checked = true;
+  if (firstSize)   firstSize.checked   = true;
 }
 
 // ============================================================
@@ -525,15 +387,6 @@ function initEventListeners(): void {
 }
 
 // ============================================================
-// HELPERS
-// ============================================================
-
-/** Returns the given string with the first letter in uppercase. */
-function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-// ============================================================
 // INIT
 // ============================================================
 
@@ -542,9 +395,9 @@ function init(): void {
   initSettingsListeners();
   initEventListeners();
 
-  state.settings.theme = 'coding';
+  state.settings.theme  = 'coding';
   state.settings.player = 'blue';
-  state.settings.size = 16;
+  state.settings.size   = 16;
   applyTheme('coding');
   updateSettingsBar();
   checkSettingsComplete();
