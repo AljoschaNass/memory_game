@@ -43,6 +43,31 @@
         gap: map-get(var.$spacing, xs);
     }
 
+    @include mx.respond-height(lg, xl) {
+        padding: 40px 100px;
+        gap: map-get(var.$spacing, lg);
+    }
+
+    @include mx.respond-height(md, lg) {
+        padding: 30px 80px;
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond-height(sm, md) {
+        padding: 20px 60px;
+        gap: map-get(var.$spacing, sm);
+    }
+
+    @include mx.respond-height(xs, sm) {
+        padding: 14px 40px;
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(zero, xs) {
+        padding: 8px 30px;
+        gap: map-get(var.$spacing, xs);
+    }
+
     &__title {
         grid-column: 1 / -1;
         font-size: fct.px-to-rem(54);
@@ -60,6 +85,25 @@
         @include mx.respond(zero, md) {
             font-size: fct.px-to-rem(32);
         }
+
+        @include mx.respond-height(md, lg) {
+            font-size: fct.px-to-rem(36);
+        }
+
+        @include mx.respond-height(sm, md) {
+            font-size: fct.px-to-rem(28);
+        }
+
+        @include mx.respond-height(xs, sm) {
+            font-size: fct.px-to-rem(24);
+            padding-bottom: map-get(var.$spacing, xs);
+        }
+
+        @include mx.respond-height(zero, xs) {
+            font-size: fct.px-to-rem(20);
+            padding-bottom: 2px;
+            border-bottom: 2px solid var.$color-yellow;
+        }
     }
 
     &__left {
@@ -73,6 +117,22 @@
 
         @include mx.respond(zero, md) {
             gap: map-get(var.$spacing, lg);
+        }
+
+        @include mx.respond-height(md, lg) {
+            gap: map-get(var.$spacing, lg);
+        }
+
+        @include mx.respond-height(sm, md) {
+            gap: map-get(var.$spacing, md);
+        }
+
+        @include mx.respond-height(xs, sm) {
+            gap: map-get(var.$spacing, sm);
+        }
+
+        @include mx.respond-height(zero, xs) {
+            gap: map-get(var.$spacing, xs);
         }
     }
 
@@ -100,6 +160,14 @@
         @include mx.respond(zero, md) {
             gap: map-get(var.$spacing, xs);
         }
+
+        @include mx.respond-height(sm, md) {
+            gap: map-get(var.$spacing, xs);
+        }
+
+        @include mx.respond-height(zero, sm) {
+            gap: 2px;
+        }
     }
 
     &__group-title {
@@ -121,6 +189,23 @@
             font-size: fct.px-to-rem(12);
         }
 
+        @include mx.respond-height(md, lg) {
+            font-size: fct.px-to-rem(16);
+        }
+
+        @include mx.respond-height(sm, md) {
+            font-size: fct.px-to-rem(14);
+        }
+
+        @include mx.respond-height(xs, sm) {
+            font-size: fct.px-to-rem(12);
+        }
+
+        @include mx.respond-height(zero, xs) {
+            font-size: fct.px-to-rem(10);
+            gap: map-get(var.$spacing, xs);
+        }
+
         img {
             width: 32px;
             aspect-ratio: 1/1;
@@ -135,6 +220,18 @@
 
             @include mx.respond(zero, xs) {
                 width: 18px;
+            }
+
+            @include mx.respond-height(sm, md) {
+                width: 20px;
+            }
+
+            @include mx.respond-height(xs, sm) {
+                width: 16px;
+            }
+
+            @include mx.respond-height(zero, xs) {
+                width: 14px;
             }
         }
     }
@@ -160,6 +257,10 @@
 
             @include mx.respond(zero, md) {
                 border-radius: map-get(var.$radius, xs);
+            }
+
+            @include mx.respond-height(zero, sm) {
+                width: 25vw;
             }
         }
     }
@@ -192,6 +293,20 @@
             padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
         }
 
+        @include mx.respond-height(md, lg) {
+            padding: map-get(var.$spacing, sm) map-get(var.$spacing, md);
+        }
+
+        @include mx.respond-height(sm, md) {
+            padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
+            gap: map-get(var.$spacing, xs);
+        }
+
+        @include mx.respond-height(zero, sm) {
+            padding: 4px map-get(var.$spacing, sm);
+            gap: map-get(var.$spacing, xs);
+        }
+
         &-item {
             font-size: fct.px-to-rem(20);
             color: var.$color-black;
@@ -209,6 +324,18 @@
             }
 
             @include mx.respond(zero, md) {
+                font-size: fct.px-to-rem(10);
+            }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(14);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(12);
+            }
+
+            @include mx.respond-height(zero, sm) {
                 font-size: fct.px-to-rem(10);
             }
         }
@@ -229,6 +356,18 @@
             @include mx.respond(zero, md) {
                 font-size: fct.px-to-rem(20);
             }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(24);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(20);
+            }
+
+            @include mx.respond-height(zero, sm) {
+                font-size: fct.px-to-rem(16);
+            }
         }
     }
 }
@@ -245,6 +384,16 @@
 
     @include mx.respond(zero, md) {
         padding-left: map-get(var.$spacing, m);
+    }
+
+    @include mx.respond-height(sm, md) {
+        padding-left: map-get(var.$spacing, md);
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(zero, sm) {
+        padding-left: map-get(var.$spacing, sm);
+        gap: 2px;
     }
 
     &__input {
@@ -264,6 +413,14 @@
         @include mx.respond(zero, md) {
             width: 12px;
         }
+
+        @include mx.respond-height(sm, md) {
+            width: 14px;
+        }
+
+        @include mx.respond-height(zero, sm) {
+            width: 10px;
+        }
     }
 
     &__label {
@@ -280,6 +437,14 @@
 
         @include mx.respond(zero, md) {
             font-size: fct.px-to-rem(12);
+        }
+
+        @include mx.respond-height(sm, md) {
+            font-size: fct.px-to-rem(12);
+        }
+
+        @include mx.respond-height(zero, sm) {
+            font-size: fct.px-to-rem(10);
         }
     }
 

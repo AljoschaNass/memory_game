@@ -15,6 +15,12 @@
     }
 }
 
+@mixin respond-height($minheight: zero, $maxheight: xxl) {
+    @media screen and (min-height: map-get(var.$breakpoints-height, $minheight)) and (max-height: map-get(var.$breakpoints-height, $maxheight)) {
+        @content;
+    }
+}
+
 // Fade in Animation
 @mixin fade-in($time: 0.3s, $eas: ease-in-out) {
     animation: fadeIn $time $eas forwards;

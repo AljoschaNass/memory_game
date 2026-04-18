@@ -1,0 +1,21 @@
+@use "../abstract/mixin" as mx;
+@use "../abstract/functions" as fct;
+@use "../base/variables" as var;
+
+.rotate-hint {
+    display: none;
+
+    @media screen and (max-width: 630px) and (orientation: portrait) {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        background-color: var.$primary-dark;
+        @include mx.flex-center(column);
+        z-index: 200;
+        color: var.$color-white;
+        font-family: var.$font-display;
+        font-size: fct.px-to-rem(24);
+        text-align: center;
+        padding: map-get(var.$spacing, xl);
+    }
+}
