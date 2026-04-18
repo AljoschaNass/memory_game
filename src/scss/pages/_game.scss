@@ -19,6 +19,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
     min-height: 100vh;
     padding: 54px 41px;
     gap: map-get(var.$spacing, xl);

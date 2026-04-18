@@ -17,6 +17,8 @@
     @include mx.flex-center(column);
     min-height: 100vh;
     gap: map-get(var.$spacing, lg);
+    max-width: 1440px;
+    margin: 0 auto;
 
     @include mx.respond(md, lg) {
         gap: map-get(var.$spacing, md);

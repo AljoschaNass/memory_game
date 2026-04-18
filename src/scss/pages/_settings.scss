@@ -25,6 +25,8 @@
     gap: map-get(var.$spacing, xl);
     padding: 80px 120px;
     height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
 
     @include mx.respond(md, lg) {
         padding: 60px 80px;
