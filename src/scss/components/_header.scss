@@ -20,6 +20,18 @@
         padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
     }
 
+    @include mx.respond-height(md, lg) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, md);
+    }
+
+    @include mx.respond-height(sm, md) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
+    }
+
+    @include mx.respond-height(zero, sm) {
+        padding: 2px map-get(var.$spacing, xs);
+    }
+
     &__scores {
         @include mx.flex-center(row);
         gap: map-get(var.$spacing, sm);
@@ -42,6 +54,14 @@
         gap: map-get(var.$spacing, sm);
         color: var.$color-white;
     }
+
+    @include mx.respond-height(sm, md) {
+            gap: map-get(var.$spacing, xs);
+        }
+
+        @include mx.respond-height(zero, sm) {
+            gap: 2px;
+        }
 }
 
 .current-player-wrapper {
@@ -63,6 +83,21 @@
    
     @include mx.respond(zero, sm) {
         padding: map-get(var.$spacing, xs) map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(md, lg) {
+        padding: map-get(var.$spacing, xs) map-get(var.$spacing, sm);
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(sm, md) {
+        padding: 2px map-get(var.$spacing, xs);
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(zero, sm) {
+        padding: 2px map-get(var.$spacing, xs);
+        gap: 2px;
     }
 
     &--blue {
