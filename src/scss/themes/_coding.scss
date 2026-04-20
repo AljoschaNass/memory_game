@@ -161,6 +161,22 @@
         @include mx.respond(xs, sm) {
             width: 65px;
         }
+
+        @include mx.respond-height(md, lg) {
+            width: 100px;
+        }
+
+        @include mx.respond-height(sm, md) {
+            width: 80px;
+        }
+
+        @include mx.respond-height(xs, sm) {
+            width: 60px;
+        }
+
+        @include mx.respond-height(zero, xs) {
+            width: 45px;
+        }
     }
 
     .gameover {
@@ -180,6 +196,26 @@
             @include mx.respond(zero, sm) {
                 font-size: fct.px-to-rem(34);
             }
+
+            @include mx.respond-height(lg, xl) {
+                font-size: fct.px-to-rem(50);
+            }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(40);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(32);
+            }
+
+            @include mx.respond-height(xs, sm) {
+                font-size: fct.px-to-rem(26);
+            }
+
+            @include mx.respond-height(zero, xs) {
+                font-size: fct.px-to-rem(20);
+            }
         }
 
         &__scores {
@@ -196,6 +232,14 @@
 
             @include mx.respond(zero, sm) {
                 padding: map-get(var.$spacing, xs) map-get(var.$spacing, m);
+            }
+
+            @include mx.respond-height(md, lg) {
+                padding: map-get(var.$spacing, xs) map-get(var.$spacing, lg);
+            }
+
+            @include mx.respond-height(zero, md) {
+                padding: map-get(var.$spacing, xs) map-get(var.$spacing, md);
             }
         }
     }
@@ -216,6 +260,22 @@
             @include mx.respond(zero, sm) {
                 font-size: fct.px-to-rem(20);
             }
+
+            @include mx.respond-height(lg, xl) {
+                font-size: fct.px-to-rem(30);
+            }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(24);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(18);
+            }
+
+            @include mx.respond-height(zero, sm) {
+                font-size: fct.px-to-rem(14);
+            }
         }
 
         &__name {
@@ -234,6 +294,22 @@
             @include mx.respond(zero, sm) {
                 font-size: fct.px-to-rem(30);
             }
+
+            @include mx.respond-height(lg, xl) {
+                font-size: fct.px-to-rem(44);
+            }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(36);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(28);
+            }
+
+            @include mx.respond-height(zero, sm) {
+                font-size: fct.px-to-rem(22);
+            }
         }
 
          &__icon {
@@ -250,6 +326,26 @@
 
             @include mx.respond(zero, sm) {
                 width: 125px;
+            }
+
+            @include mx.respond-height(lg, xl) {
+                width: 150px;
+            }
+
+            @include mx.respond-height(md, lg) {
+                width: 120px;
+            }
+
+            @include mx.respond-height(sm, md) {
+                width: 90px;
+            }
+
+            @include mx.respond-height(xs, sm) {
+                width: 70px;
+            }
+
+            @include mx.respond-height(zero, xs) {
+                width: 50px;
             }
         }
     }
