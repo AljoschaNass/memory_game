@@ -39,6 +39,31 @@
         padding: 22px 12px;
         gap: map-get(var.$spacing, sm);
     }
+
+    @include mx.respond-height(lg, xl) {
+        padding: 36px 32px;
+        gap: map-get(var.$spacing, lg);
+    }
+
+    @include mx.respond-height(md, lg) {
+        padding: 24px 24px;
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond-height(sm, md) {
+        padding: 16px 16px;
+        gap: map-get(var.$spacing, sm);
+    }
+
+    @include mx.respond-height(xs, sm) {
+        padding: 10px 12px;
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(zero, xs) {
+        padding: 6px 8px;
+        gap: map-get(var.$spacing, xs);
+    }
 }
 
 .board {
@@ -48,6 +73,14 @@
 
     @include mx.respond(zero, xs) {
         gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(sm, md) {
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(zero, sm) {
+        gap: 2px;
     }
 
     &--16 {
@@ -60,5 +93,13 @@
 
     &--36 {
         grid-template-columns: repeat(6, 1fr);
+
+        @include mx.respond(zero, md) {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        @include mx.respond-height(zero, lg) {
+            grid-template-columns: repeat(9, 1fr);
+        }
     }
 }
