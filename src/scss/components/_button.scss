@@ -64,6 +64,27 @@
             margin-top: map-get(var.$spacing, md);
         }
 
+        @include mx.respond-height(sm, md) {
+            height: 60px;
+            width: 180px;
+            font-size: fct.px-to-rem(24);
+            margin-top: map-get(var.$spacing, md);
+        }
+
+        @include mx.respond-height(xs, sm) {
+            height: 50px;
+            width: 150px;
+            font-size: fct.px-to-rem(20);
+            margin-top: map-get(var.$spacing, sm);
+        }
+
+        @include mx.respond-height(zero, xs) {
+            height: 40px;
+            width: 120px;
+            font-size: fct.px-to-rem(16);
+            margin-top: map-get(var.$spacing, xs);
+        }
+
         img {
             width: 44px;
             aspect-ratio: 1.38 / 1;
@@ -84,6 +105,18 @@
             @include mx.respond(zero, xs) {
                 width: 20px;
             }
+
+            @include mx.respond-height(md, lg) {
+                width: 30px;
+            }
+
+            @include mx.respond-height(sm, md) {
+                width: 24px;
+            }
+
+            @include mx.respond-height(zero, sm) {
+                width: 18px;
+            }
         }
 
         span {
@@ -103,6 +136,22 @@
 
             @include mx.respond(zero, xs) {
                 font-size: fct.px-to-rem(20);
+            }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(30);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(24);
+            }
+
+            @include mx.respond-height(xs, sm) {
+                font-size: fct.px-to-rem(20);
+            }
+
+            @include mx.respond-height(zero, xs) {
+                font-size: fct.px-to-rem(16);
             }
         }
 
@@ -162,6 +211,26 @@
             width: 65px;
         }
 
+        @include mx.respond-height(md, lg) {
+            width: 100px;
+            padding: 10px 16px;
+        }
+
+        @include mx.respond-height(sm, md) {
+            width: 85px;
+            padding: 8px 12px;
+        }
+
+        @include mx.respond-height(xs, sm) {
+            width: 70px;
+            padding: 6px 10px;
+        }
+
+        @include mx.respond-height(zero, xs) {
+            width: 60px;
+            padding: 4px 8px;
+        }
+
         img {
             width: 20px;
             aspect-ratio: 1.25 / 1;
@@ -182,6 +251,18 @@
             @include mx.respond(zero, xs) {
                 width: 12px;
             }
+
+            @include mx.respond(zero, xs) {
+                width: 12px;
+            }
+
+            @include mx.respond-height(sm, md) {
+                width: 14px;
+            }
+
+            @include mx.respond-height(zero, sm) {
+                width: 12px;
+            }
         }
 
         span {
@@ -200,6 +281,18 @@
             }
 
             @include mx.respond(zero, xs) {
+                font-size: fct.px-to-rem(12);
+            }
+
+            @include mx.respond-height(md, lg) {
+                font-size: fct.px-to-rem(16);
+            }
+
+            @include mx.respond-height(sm, md) {
+                font-size: fct.px-to-rem(14);
+            }
+
+            @include mx.respond-height(zero, sm) {
                 font-size: fct.px-to-rem(12);
             }
         }
@@ -269,6 +362,18 @@
             padding: fct.px-to-rem(6) fct.px-to-rem(9);
         }
 
+        @include mx.respond-height(md, lg) {
+            padding: fct.px-to-rem(10) fct.px-to-rem(16);
+        }
+
+        @include mx.respond-height(sm, md) {
+            padding: fct.px-to-rem(6) fct.px-to-rem(12);
+        }
+
+        @include mx.respond-height(zero, sm) {
+            padding: fct.px-to-rem(4) fct.px-to-rem(8);
+        }
+
         img {
             width: 26px;
 
@@ -286,6 +391,18 @@
 
             @include mx.respond(zero, xs) {
                 width: 16px;
+            }
+
+            @include mx.respond-height(md, lg) {
+                width: 20px;
+            }
+
+            @include mx.respond-height(sm, md) {
+                width: 16px;
+            }
+
+            @include mx.respond-height(zero, sm) {
+                width: 14px;
             }
         }
 
@@ -319,6 +436,26 @@
         @include mx.respond(zero, xs) {
             font-size: fct.px-to-rem(12);
             padding: fct.px-to-rem(6) fct.px-to-rem(9);
+        }
+
+        @include mx.respond-height(md, lg) {
+            font-size: fct.px-to-rem(16);
+            padding: fct.px-to-rem(10) fct.px-to-rem(16);
+        }
+
+        @include mx.respond-height(sm, md) {
+            font-size: fct.px-to-rem(14);
+            padding: fct.px-to-rem(8) fct.px-to-rem(12);
+        }
+
+        @include mx.respond-height(xs, sm) {
+            font-size: fct.px-to-rem(12);
+            padding: fct.px-to-rem(6) fct.px-to-rem(10);
+        }
+
+        @include mx.respond-height(zero, xs) {
+            font-size: fct.px-to-rem(10);
+            padding: fct.px-to-rem(4) fct.px-to-rem(8);
         }
 
         &:hover {
