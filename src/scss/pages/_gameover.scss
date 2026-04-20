@@ -34,6 +34,22 @@
         gap: map-get(var.$spacing, sm);
     }
 
+    @include mx.respond-height(lg, xl) {
+        gap: map-get(var.$spacing, lg);
+    }
+
+    @include mx.respond-height(md, lg) {
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond-height(sm, md) {
+        gap: map-get(var.$spacing, sm);
+    }
+
+    @include mx.respond-height(zero, sm) {
+        gap: map-get(var.$spacing, xs);
+    }
+
     &__title {
         font-weight: map-get(var.$font-weights, bold);
     }
@@ -53,6 +69,18 @@
         @include mx.respond(zero, sm) {
             font-size: fct.px-to-rem(16);
         }
+
+        @include mx.respond-height(md, lg) {
+            font-size: fct.px-to-rem(22);
+        }
+
+        @include mx.respond-height(sm, md) {
+            font-size: fct.px-to-rem(18);
+        }
+
+        @include mx.respond-height(zero, sm) {
+            font-size: fct.px-to-rem(14);
+        }
     }
 
     &__scores {
@@ -68,6 +96,14 @@
         }
 
         @include mx.respond(zero, sm) {
+            gap: map-get(var.$spacing, xs);
+        }
+
+        @include mx.respond-height(sm, md) {
+            gap: map-get(var.$spacing, sm);
+        }
+
+        @include mx.respond-height(zero, sm) {
             gap: map-get(var.$spacing, xs);
         }
     }

@@ -32,6 +32,22 @@
         gap: map-get(var.$spacing, xs);
     }
 
+    @include mx.respond-height(lg, xl) {
+        gap: map-get(var.$spacing, md);
+    }
+
+    @include mx.respond-height(md, lg) {
+        gap: map-get(var.$spacing, sm);
+    }
+
+    @include mx.respond-height(sm, md) {
+        gap: map-get(var.$spacing, xs);
+    }
+
+    @include mx.respond-height(zero, sm) {
+        gap: 2px;
+    }
+
     &__confetti {
         position: absolute;
         top: -32px;
@@ -40,6 +56,10 @@
         width: 100%;
         pointer-events: none;
         z-index: 0;
+
+        @include mx.respond-height(zero, md) {
+            top: -16px;
+        }
     }
 
     &__subtitle {
@@ -74,6 +94,22 @@
 
         @include mx.respond(zero, sm) {
             margin: 10px 0;
+        }
+
+        @include mx.respond-height(lg, xl) {
+            margin: 20px 0;
+        }
+
+        @include mx.respond-height(md, lg) {
+            margin: 14px 0;
+        }
+
+        @include mx.respond-height(sm, md) {
+            margin: 8px 0;
+        }
+
+        @include mx.respond-height(zero, sm) {
+            margin: 4px 0;
         }
     }
 }
