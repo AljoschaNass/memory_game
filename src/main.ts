@@ -27,26 +27,26 @@ const state: GameState = {
 // ============================================================
 
 const views = {
-  home:     document.getElementById('view-home')!,
+  home: document.getElementById('view-home')!,
   settings: document.getElementById('view-settings')!,
-  game:     document.getElementById('view-game')!,
+  game: document.getElementById('view-game')!,
   gameover: document.getElementById('view-gameover')!,
-  winner:   document.getElementById('view-winner')!,
+  winner: document.getElementById('view-winner')!,
 };
 
-const popup            = document.getElementById('popup')!;
-const board            = document.getElementById('board')!;
-const btnStart         = document.getElementById('btn-start') as HTMLButtonElement;
-const barTheme         = document.getElementById('bar-theme')!;
-const barPlayer        = document.getElementById('bar-player')!;
-const barSize          = document.getElementById('bar-size')!;
-const settingsPreview  = document.getElementById('settings-preview')!;
-const scoreBlueEl      = document.getElementById('score-blue-value')!;
-const scoreOrangeEl    = document.getElementById('score-orange-value')!;
-const finalScoreBlue   = document.getElementById('final-score-blue')!;
+const popup = document.getElementById('popup')!;
+const board = document.getElementById('board')!;
+const btnStart = document.getElementById('btn-start') as HTMLButtonElement;
+const barTheme = document.getElementById('bar-theme')!;
+const barPlayer = document.getElementById('bar-player')!;
+const barSize = document.getElementById('bar-size')!;
+const settingsPreview = document.getElementById('settings-preview')!;
+const scoreBlueEl = document.getElementById('score-blue-value')!;
+const scoreOrangeEl = document.getElementById('score-orange-value')!;
+const finalScoreBlue = document.getElementById('final-score-blue')!;
 const finalScoreOrange = document.getElementById('final-score-orange')!;
-const winnerNameEl     = document.getElementById('winner-name')!;
-const winnerIconEl     = document.getElementById('winner-icon') as HTMLImageElement;
+const winnerNameEl = document.getElementById('winner-name')!;
+const winnerIconEl = document.getElementById('winner-icon') as HTMLImageElement;
 
 // ============================================================
 // VIEW NAVIGATION
@@ -88,9 +88,9 @@ function checkSettingsComplete(): void {
 /** Updates the settings bar text with the current selections. */
 function updateSettingsBar(): void {
   const { theme, player, size } = state.settings;
-  barTheme.textContent  = theme  ? THEME_LABELS[theme] : 'Theme';
+  barTheme.textContent = theme ? THEME_LABELS[theme] : 'Theme';
   barPlayer.textContent = player ? `${capitalize(player)} Player` : 'Player';
-  barSize.textContent   = size   ? `Board-${size} Cards` : 'Board size';
+  barSize.textContent = size ? `Board-${size} Cards` : 'Board size';
 }
 
 /** Sets up change listeners for all settings radio buttons. */
@@ -141,7 +141,7 @@ function renderBoard(): void {
 
 /** Updates both score values in the header. */
 function updateScoreDisplay(): void {
-  scoreBlueEl.textContent   = String(state.scores.blue);
+  scoreBlueEl.textContent = String(state.scores.blue);
   scoreOrangeEl.textContent = String(state.scores.orange);
 }
 
@@ -156,7 +156,7 @@ function updateCurrentPlayerDisplay(): void {
 
 /** Sets the current player icon to a white pawn with colored background. */
 function updateGamingPlayerDisplay(): void {
-  const icon    = document.getElementById('current-player-icon') as HTMLImageElement;
+  const icon = document.getElementById('current-player-icon') as HTMLImageElement;
   const wrapper = document.getElementById('current-player-wrapper');
   icon.src = `${ICON_PATH}chess_pawn_white.svg`;
   if (wrapper) {
@@ -166,7 +166,7 @@ function updateGamingPlayerDisplay(): void {
 
 /** Sets the current player icon to a colored pawn without background. */
 function updateCodingPlayerDisplay(): void {
-  const icon    = document.getElementById('current-player-icon') as HTMLImageElement;
+  const icon = document.getElementById('current-player-icon') as HTMLImageElement;
   const wrapper = document.getElementById('current-player-wrapper');
   icon.src = `${ICON_PATH}player-${state.currentPlayer}.svg`;
   if (wrapper) {
@@ -177,9 +177,9 @@ function updateCodingPlayerDisplay(): void {
 
 /** Shows or hides the score labels (Blue, Orange) in the header. */
 function setScoreLabelsVisible(visible: boolean): void {
-  const blueLabel   = document.getElementById('score-blue-label');
+  const blueLabel = document.getElementById('score-blue-label');
   const orangeLabel = document.getElementById('score-orange-label');
-  if (blueLabel)   blueLabel.style.display   = visible ? 'inline' : 'none';
+  if (blueLabel) blueLabel.style.display = visible ? 'inline' : 'none';
   if (orangeLabel) orangeLabel.style.display = visible ? 'inline' : 'none';
 }
 
@@ -188,8 +188,8 @@ function setScoreIcons(theme: Theme): void {
   const blueIcon   = document.querySelector('#score-blue img') as HTMLImageElement;
   const orangeIcon = document.querySelector('#score-orange img') as HTMLImageElement;
   const prefix = theme === 'gaming' ? 'chess_pawn' : 'player-';
-  const sep    = theme === 'gaming' ? '_' : '';
-  if (blueIcon)   blueIcon.src   = `${ICON_PATH}${prefix}${sep}blue.svg`;
+  const sep = theme === 'gaming' ? '_' : '';
+  if (blueIcon) blueIcon.src = `${ICON_PATH}${prefix}${sep}blue.svg`;
   if (orangeIcon) orangeIcon.src = `${ICON_PATH}${prefix}${sep}orange.svg`;
 }
 
@@ -216,7 +216,7 @@ function handleCardClick(e: MouseEvent): void {
   const cardEl = (e.target as HTMLElement).closest('.card') as HTMLButtonElement;
   if (!cardEl) return;
 
-  const id   = Number(cardEl.dataset.id);
+  const id = Number(cardEl.dataset.id);
   const card = state.cards.find(c => c.id === id);
   if (!card || card.isFlipped || card.isMatched) return;
 
@@ -288,10 +288,10 @@ function showWinnerScreen(): void {
 
   if (winner === 'draw') {
     winnerNameEl.textContent = "It's a draw!";
-    winnerNameEl.className   = 'winner__name';
+    winnerNameEl.className = 'winner__name';
   } else {
     winnerNameEl.textContent = `${capitalize(winner)} Player`;
-    winnerNameEl.className   = `winner__name winner__name--${winner}`;
+    winnerNameEl.className = `winner__name winner__name--${winner}`;
   }
 
   winnerIconEl.src = getWinnerIcon(state, winner);
@@ -308,10 +308,10 @@ function startGame(): void {
   if (!theme || !player || !size) return;
 
   state.currentPlayer = player;
-  state.scores        = { blue: 0, orange: 0 };
-  state.flippedCards  = [];
-  state.isLocked      = false;
-  state.cards         = createCards(theme, size);
+  state.scores = { blue: 0, orange: 0 };
+  state.flippedCards = [];
+  state.isLocked = false;
+  state.cards = createCards(theme, size);
 
   updateScoreDisplay();
   updateCurrentPlayerDisplay();
@@ -323,8 +323,8 @@ function startGame(): void {
 /** Resets all state and settings back to defaults. */
 function resetToHome(): void {
   state.settings = { theme: 'coding', player: 'blue', size: 16 };
-  state.cards    = [];
-  state.scores   = { blue: 0, orange: 0 };
+  state.cards = [];
+  state.scores = { blue: 0, orange: 0 };
 
   resetRadioButtons();
   applyTheme('coding');
@@ -336,13 +336,13 @@ function resetToHome(): void {
 
 /** Resets all radio buttons to their first option. */
 function resetRadioButtons(): void {
-  const firstTheme  = document.querySelector<HTMLInputElement>('input[name="theme"]');
+  const firstTheme = document.querySelector<HTMLInputElement>('input[name="theme"]');
   const firstPlayer = document.querySelector<HTMLInputElement>('input[name="player"]');
-  const firstSize   = document.querySelector<HTMLInputElement>('input[name="size"]');
+  const firstSize = document.querySelector<HTMLInputElement>('input[name="size"]');
 
-  if (firstTheme)  firstTheme.checked  = true;
+  if (firstTheme) firstTheme.checked = true;
   if (firstPlayer) firstPlayer.checked = true;
-  if (firstSize)   firstSize.checked   = true;
+  if (firstSize) firstSize.checked = true;
 }
 
 // ============================================================
@@ -395,9 +395,9 @@ function init(): void {
   initSettingsListeners();
   initEventListeners();
 
-  state.settings.theme  = 'coding';
+  state.settings.theme = 'coding';
   state.settings.player = 'blue';
-  state.settings.size   = 16;
+  state.settings.size = 16;
   applyTheme('coding');
   updateSettingsBar();
   checkSettingsComplete();
